@@ -13,6 +13,7 @@ The library has been deployed as part of the [FT Web App](http://app.ft.com/) an
 * Chrome on Android (ICS)
 * Opera Mobile 11.5 and upwards
 * Android Browser since Honeycomb
+* PlayBook OS 1 and upwards
 
 FastClick doesn't attach any listeners on desktop browsers as it is not needed. Those that have been tested are:
 
