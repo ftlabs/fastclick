@@ -40,25 +40,6 @@ window.addEventListener('load', function() {
 }, false);
 ```
 
-## Usage
-
-Include ftscroller.js in your JavaScript bundle or add it to your HTML page like this:
-
-    <script type='text/javascript' src='/path/to/ftscroller.js'></script>
-
-The script must be loaded prior to instantiating a scroller on any element of the page.
-
-To create a scroller, with a few minimal options:
-
-```js
-var containerel, scroller;
-containerel = document.getElementById('scrollcontainer');
-var scroller = new FTScroller(containerel, {
-	scrollbars: false,
-	scrollingX: false
-});
-```
-
 ## Advanced
 
 Internally, FastClick uses `document.createEvent` to fire a synthetic `click` event as soon as `touchend` is fired by the browser. It then suppresses the additional `click` event created by the browser after that. In some cases, the non-synthetic `click` event created by the browser is required, as described in the [triggering focus example](http://ftlabs.github.com/fastclick/examples/focus.html).
