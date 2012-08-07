@@ -1,0 +1,27 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+<style type="text/css"> 
+	p, .test { font-family: sans-serif; }
+	.test { height: 80px; margin: 1em; padding-top: 40px; border: 1px solid black; font-size: 2em; text-align:center }
+	input { height: 40px; width: 150px; margin: 1em; }
+
+	/* Disable certain interactions on touch devices */
+	body { -webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-select: none; -webkit-highlight: none; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+</style> 
+<script type="application/javascript" src="../src/fastclick.js"></script> 
+<script type="application/javascript">
+	document.addEventListener('load', function () {
+		new FastClick(document.body);
+	}, false);
+</script> 
+</head> 
+<body> 
+	<p>FastClick is instantiated on the body element, but the <code>input</code> element below will not receive fast clicks.</p> 
+	<p>This is because iOS does not allow programmatic events (created using <code>document.createEvent</code> and used internally by FastClick) to trigger focus on <code>input</code> elements.</p>
+	<div style="text-align:center">
+		<input type="text" placeholder="Tap me">
+	</div>
+</body> 
+</html>
