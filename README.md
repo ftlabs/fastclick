@@ -40,10 +40,6 @@ window.addEventListener('load', function() {
 }, false);
 ```
 
-## Credits and collaboration
-
-The lead developer of FastClick is Rowan Beentje at FT Labs. It is currently maintained by Matthew Caruana Galizia, also at FT Labs. All open source code released by FT Labs is licenced under the MIT licence. We welcome comments, feedback and suggestions.  Please feel free to raise an issue or pull request. Enjoy.
-
 ## Usage
 
 Include ftscroller.js in your JavaScript bundle or add it to your HTML page like this:
@@ -76,3 +72,7 @@ FastClick is designed to cope with many different browser oddities. Here are som
 * [basic use](http://ftlabs.github.com/fastclick/examples/layer.html) showing the increase in perceived responsiveness
 * [triggering focus](http://ftlabs.github.com/fastclick/examples/focus.html) on an input element from a `click` handler
 * [input element](http://ftlabs.github.com/fastclick/examples/input.html) which never receives fast clicks
+
+## Credits and collaboration
+
+The lead developer of FastClick is Rowan Beentje at FT Labs. It is currently maintained by Matthew Caruana Galizia, also at FT Labs. All open source code released by FT Labs is licenced under the MIT licence. We welcome comments, feedback and suggestions.  Please feel free to raise an issue or pull request. Enjoy.
