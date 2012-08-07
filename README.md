@@ -8,19 +8,19 @@ FastClick is developed by [FT Labs](http://labs.ft.com), part of the Financial T
 
 The library has been deployed as part of the [FT Web App](http://app.ft.com/) and is tried and tested on the following mobile browsers:
 
-Mobile Safari on iOS 3 and upwards
-Chrome on iOS 5 and upwards
-Chrome on Android (ICS)
-Opera Mobile 11.5 and upwards
-Android Browser since Honeycomb
+* Mobile Safari on iOS 3 and upwards
+* Chrome on iOS 5 and upwards
+* Chrome on Android (ICS)
+* Opera Mobile 11.5 and upwards
+* Android Browser since Honeycomb
 
 FastClick doesn't attach any listeners on desktop browsers as it is not needed. Those that have been tested are:
 
-Safari
-Chrome
-Internet Explorer
-Firefox
-Opera
+* Safari
+* Chrome
+* Internet Explorer
+* Firefox
+* Opera
 
 ## Usage
 
