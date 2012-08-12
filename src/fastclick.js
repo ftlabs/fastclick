@@ -11,7 +11,7 @@
 /*jslint browser:true*/
 /*global Node*/
 
-var FastClick = (function() {
+self.FastClick = (function() {
 	'use strict';
 
 	var
@@ -149,7 +149,7 @@ var FastClick = (function() {
 
 				// If the targetted node is a text node, target the parent instead
 				if (targetElement.nodeType === Node.TEXT_NODE) {
-					targetElement = targetElement.parentNode;
+					targetElement = targetElement.parentElement;
 				}
 
 				// Prevent the actual click from going though - unless the target node is marked as requiring
@@ -164,7 +164,9 @@ var FastClick = (function() {
 				clickEvent.initMouseEvent('click', true, true, window, 1, 0, 0, targetCoordinates.x, targetCoordinates.y, false, false, false, false, 0, null);
 				clickEvent.forwardedTouchEvent = true;
 				targetElement.dispatchEvent(clickEvent);
+
 				event.preventDefault();
+				return false;
 			},
 
 
@@ -224,7 +226,7 @@ var FastClick = (function() {
 		}
 
 		// Devices that don't support touch don't need FastClick
-		if (window.ontouchstart === undefined) {
+		if (typeof window.ontouchstart === 'undefined') {
 			return;
 		}
 
@@ -240,7 +242,7 @@ var FastClick = (function() {
 		// adding it as listener.
 		if (typeof layer.onclick === 'function') {
 			layer.addEventListener('click', layer.onclick, false);
-			layer.onclick = '';
+			layer.onclick = null;
 		}
 	}
 
