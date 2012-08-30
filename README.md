@@ -55,6 +55,10 @@ FastClick is designed to cope with many different browser oddities. Here are som
 * [triggering focus](http://ftlabs.github.com/fastclick/examples/focus.html) on an input element from a `click` handler
 * [input element](http://ftlabs.github.com/fastclick/examples/input.html) which never receives fast clicks
 
+## Google Closure Compiler
+
+FastClick supports compilation with `ADVANCED_OPTIMIZATIONS` ('advanced mode'), which should reduce its size by about 70% (60% gzipped). Note that exposure of the `FastClick` variable isn't forced therefore you must compile it along with all of your code.
+
 ## Credits and collaboration
 
 The lead developer of FastClick is [Rowan Beentje](http://twitter.com/rowanbeentje) at FT Labs. This fork is currently maintained by [Matthew Caruana Galizia](http://twitter.com/mcaruanagalizia), also at FT Labs. All open source code released by FT Labs is licenced under the MIT licence. We welcome comments, feedback and suggestions.  Please feel free to raise an issue or pull request. Enjoy.

@@ -1,7 +1,5 @@
 /**
- * @preserve
- *
- * FastClick: polyfill to remove click delays on browsers with touch UIs.
+ * @preserve FastClick: polyfill to remove click delays on browsers with touch UIs.
  *
  * @copyright The Financial Times Limited [All Rights Reserved]
  * @licence MIT License (see LICENCE.txt)
@@ -11,7 +9,7 @@
 /*jslint browser:true*/
 /*global Node*/
 
-self.FastClick = (function() {
+var FastClick = (function() {
 	'use strict';
 
 	var
