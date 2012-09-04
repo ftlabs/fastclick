@@ -42,6 +42,10 @@ var FastClick = (function() {
 	function FastClick(layer) {
 		var
 
+
+			/**
+			 * @type Function
+			 */
 			oldOnClick,
 
 
