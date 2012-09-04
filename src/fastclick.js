@@ -55,13 +55,13 @@ var FastClick = (function() {
 	 * @return {Element}
 	 */
 	function eleAtWindowPosition(x, y) {
-	
+
 		// On Chrome for Android, amend coordinates by the device pixel ratio.
 		if (chromeAndroid && window.devicePixelRatio) {
 			x *= window.devicePixelRatio;
 			y *= window.devicePixelRatio;
 		}
-	
+
 		return document.elementFromPoint(x, y);
 	}
 
