@@ -14,6 +14,20 @@ var FastClick = (function() {
 
 	var
 
+
+		/**
+		 * Earlier versions of Chrome for Android don't report themselves as "Chrome" but "CrMo" - check for both.
+		 *
+		 * @type boolean
+		 */
+		chromeAndroid = /Android.+Chrome|CrMo/.test(navigator.userAgent),
+
+
+		/**
+		 * Placebook requires a greater scroll boundary.
+		 *
+		 * @type number
+		 */
 		scrollBoundary = navigator.userAgent.indexOf('PlayBook') === -1 ? 5 : 20;
 
 
@@ -30,6 +44,25 @@ var FastClick = (function() {
 			'label' : true,
 			'video' : true
 		})[target.nodeName.toLowerCase()];
+	}
+
+
+	/**
+	 * Retrieve an element based on coordinates within the window.
+	 *
+	 * @param {number} x
+	 * @param {number} y
+	 * @return {Element}
+	 */
+	function eleAtWindowPosition(x, y) {
+	
+		// On Chrome for Android, amend coordinates by the device pixel ratio.
+		if (chromeAndroid && window.devicePixelRatio) {
+			x *= window.devicePixelRatio;
+			y *= window.devicePixelRatio;
+		}
+	
+		return document.elementFromPoint(x, y);
 	}
 
 
@@ -144,7 +177,7 @@ var FastClick = (function() {
 				};
 
 				// Derive the element to click as a result of the touch.
-				targetElement = document.elementFromPoint(targetCoordinates.x, targetCoordinates.y);
+				targetElement = eleAtWindowPosition(targetCoordinates.x, targetCoordinates.y);
 
 				// If we're not clicking anything exit early
 				if (!targetElement) {
@@ -202,7 +235,7 @@ var FastClick = (function() {
 					return true;
 				}
 
-				targetElement = document.elementFromPoint(clickStart.x - clickStart.scrollX, clickStart.y - clickStart.scrollY);
+				targetElement = eleAtWindowPosition(clickStart.x - clickStart.scrollX, clickStart.y - clickStart.scrollY);
 
 				// Derive and check the target element to see whether the click needs to be permitted;
 				// unless explicitly enabled, prevent non-touch click events from triggering actions,
