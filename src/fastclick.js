@@ -42,6 +42,8 @@ var FastClick = (function() {
 	function FastClick(layer) {
 		var
 
+			oldOnClick,
+
 
 			/**
 			 * The position and page scroll amount when click had started to be tracked.
@@ -198,19 +200,19 @@ var FastClick = (function() {
 
 				targetElement = document.elementFromPoint(clickStart.x - clickStart.scrollX, clickStart.y - clickStart.scrollY);
 
-				// Derive and check the target element to see whether the
-				// click needs to be permitted; unless explicitly enabled, prevent non-touch click events
-				// from triggering actions, to prevent ghost/doubleclicks.
+				// Derive and check the target element to see whether the click needs to be permitted;
+				// unless explicitly enabled, prevent non-touch click events from triggering actions,
+				// to prevent ghost/doubleclicks.
 				if (!targetElement || !needsClick(targetElement)) {
-
-					// Cancel the event
-					event.stopPropagation();
-					event.preventDefault();
 
 					// Prevent any user-added listeners declared on FastClick element from being fired.
 					if (event.stopImmediatePropagation) {
 						event.stopImmediatePropagation();
 					}
+
+					// Cancel the event
+					event.stopPropagation();
+					event.preventDefault();
 
 					return false;
 				}
@@ -239,7 +241,13 @@ var FastClick = (function() {
 		// FastClick's onClick handler. Fix this by pulling out the user-defined handler function and
 		// adding it as listener.
 		if (typeof layer.onclick === 'function') {
-			layer.addEventListener('click', layer.onclick, false);
+
+			// Android browser on at least 3.2 requires a new reference to the function in layer.onclick
+			// - the old one won't work if passed to addEventListener directly.
+			oldOnClick = layer.onclick;
+			layer.addEventListener('click', function(event) {
+				oldOnClick(event);
+			}, false);
 			layer.onclick = null;
 		}
 	}
