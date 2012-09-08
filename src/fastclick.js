@@ -39,10 +39,11 @@ var FastClick = (function() {
 	 */
 	function needsClick(target) {
 		return (/\bneedsclick\b/).test(target.className) || ({
-			'select': true,
-			'input' : true,
-			'label' : true,
-			'video' : true
+			'textarea': true,
+			'select':   true,
+			'input' :   true,
+			'label' :   true,
+			'video' :   true
 		})[target.nodeName.toLowerCase()];
 	}
 
