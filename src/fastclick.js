@@ -2,7 +2,7 @@
  * @preserve FastClick: polyfill to remove click delays on browsers with touch UIs.
  *
  * @copyright The Financial Times Limited [All Rights Reserved]
- * @licence MIT License (see LICENCE.txt)
+ * @license MIT License (see LICENCE.txt)
  * @codingstandard ftlabs-jslint
  */
 
