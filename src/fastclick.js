@@ -38,13 +38,16 @@ var FastClick = (function() {
 	 * @returns {boolean} Returns true if the element needs a native click
 	 */
 	function needsClick(target) {
-		return (/\bneedsclick\b/).test(target.className) || ({
-			'textarea': true,
-			'select':   true,
-			'input' :   true,
-			'label' :   true,
-			'video' :   true
-		})[target.nodeName.toLowerCase()];
+		switch (target.nodeName.toLowerCase()) {
+			case 'textarea':
+			case 'select':
+			case 'input':
+			case 'label':
+			case 'video':
+			return true;
+			default:
+			return (/\bneedsclick\b/).test(target.className);
+		}
 	}
 
 
