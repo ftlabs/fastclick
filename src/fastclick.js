@@ -7,7 +7,7 @@
  */
 
 /*jslint browser:true*/
-/*global Node*/
+/*global Node, define*/
 
 (function() {
 	'use strict';
@@ -293,10 +293,14 @@
 		}
 	}
 
-	if (typeof define === "function" && define.amd) {
+	if (typeof define === 'function' && define.amd) {
+
 		// AMD. Register as an anonymous module.
-		define(function() { return FastClick; });
+		define(function() {
+			return FastClick;
+		});
 	} else {
+
 		// Browser global
 		window.FastClick = FastClick;
 	}
