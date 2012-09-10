@@ -295,7 +295,7 @@
 
 	if (typeof define === "function" && define.amd) {
 		// AMD. Register as an anonymous module.
-		define(FastClick);
+		define(function() { return FastClick; });
 	} else {
 		// Browser global
 		window.FastClick = FastClick;
