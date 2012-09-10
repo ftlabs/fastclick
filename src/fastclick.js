@@ -9,7 +9,7 @@
 /*jslint browser:true*/
 /*global Node*/
 
-var FastClick = (function() {
+(function() {
 	'use strict';
 
 	var
@@ -293,6 +293,11 @@ var FastClick = (function() {
 		}
 	}
 
-	return FastClick;
-
+	if (typeof define === "function" && define.amd) {
+		// AMD. Register as an anonymous module.
+		define(FastClick);
+	} else {
+		// Browser global
+		window.FastClick = FastClick;
+	}
 }());
