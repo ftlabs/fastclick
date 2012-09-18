@@ -24,7 +24,7 @@
 
 
 		/**
-		 * Placebook requires a greater scroll boundary.
+		 * Playbook requires a greater scroll boundary.
 		 *
 		 * @type number
 		 */
