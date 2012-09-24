@@ -61,7 +61,7 @@ FastClick is designed to cope with many different browser oddities. Here are som
 
 * [basic use](http://ftlabs.github.com/fastclick/examples/layer.html) showing the increase in perceived responsiveness
 * [triggering focus](http://ftlabs.github.com/fastclick/examples/focus.html) on an input element from a `click` handler
-* [input element](http://ftlabs.github.com/fastclick/examples/input.html) which never receives fast clicks
+* [input element](http://ftlabs.github.com/fastclick/examples/input.html) which never receives clicks but gets fast focus
 
 ## Credits and collaboration
 

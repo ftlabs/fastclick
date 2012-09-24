@@ -12,14 +12,14 @@
 </style> 
 <script type="application/javascript" src="../src/fastclick.js"></script> 
 <script type="application/javascript">
-	document.addEventListener('load', function () {
+	window.addEventListener('load', function () {
 		new FastClick(document.body);
 	}, false);
 </script> 
 </head> 
 <body> 
-	<p>FastClick is instantiated on the body element, but the <code>input</code> element below will not receive fast clicks.</p> 
-	<p>This is because iOS does not allow programmatic events (created using <code>document.createEvent</code> and used internally by FastClick) to trigger focus on <code>input</code> elements.</p>
+	<p>FastClick is instantiated on the body element, but the <code>input</code> element below will not receive clicks. Instead <code>focus()</code> will be called on the input element when <code>touchend</code> fires.</p>
+	<p>The keyboard will still appear after delay on iOS 4 or earlier, however.</p>
 	<div>
 		<input type="text" placeholder="Tap me">
 	</div>

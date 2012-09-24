@@ -206,16 +206,21 @@
 					targetElement = targetElement.parentElement;
 				}
 
-				// Prevent the actual click from going though - unless the target node is marked as requiring
-				// real clicks or if it is in the whitelist in which case only non-programmatic clicks are permitted
-				// to open the options list and so the original event is required.
-				if (needsClick(targetElement)) {
-					return false;
-				}
-
 				if (needsFocus(targetElement)) {
+					if (document.activeElement) {
+						document.activeElement.blur();
+					}
+
 					targetElement.focus();
 				} else {
+
+					// Prevent the actual click from going though - unless the target node is marked as requiring
+					// real clicks or if it is in the whitelist in which case only non-programmatic clicks are permitted
+					// to open the options list and so the original event is required.
+					if (needsClick(targetElement)) {
+						return false;
+					}
+
 					// Synthesise a click event, with an extra attribute so it can be tracked
 					clickEvent = document.createEvent('MouseEvents');
 					clickEvent.initMouseEvent('click', true, true, window, 1, 0, 0, targetCoordinates.x, targetCoordinates.y, false, false, false, false, 0, null);
