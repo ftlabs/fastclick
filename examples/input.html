@@ -3,9 +3,9 @@
 <head> 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
 <style type="text/css"> 
-	p, .test { font-family: sans-serif; }
-	.test { margin: 1em 4em; line-height: 4em; border: 1px solid black; font-size: 2em; text-align: center; }
-	input { height: 3em; width: 10em; margin: 1em auto; display: block; }
+	p { font-family: sans-serif; }
+	.test { text-align: center; }
+	input { height: 3em; width: 10em; }
 
 	/* Disable certain interactions on touch devices */
 	body { -webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-select: none; -webkit-highlight: none; -webkit-tap-highlight-color: rgba(0,0,0,0); }
@@ -18,10 +18,17 @@
 </script> 
 </head> 
 <body> 
-	<p>FastClick is instantiated on the body element, but the <code>input</code> element below will not receive clicks. Instead <code>focus()</code> will be called on the input element when <code>touchend</code> fires.</p>
+	<p>FastClick is instantiated on the body element, but the <code>input</code> element below will not receive fast clicks. Instead <code>focus()</code> will be called on the input element when <code>touchend</code> fires.</p>
 	<p>The keyboard will still appear after delay on iOS 4 or earlier, however.</p>
-	<div>
+	<div class="test">
 		<input type="text" placeholder="Tap me">
+	</div>
+	<p>The same is true for the <code>select</code> element. It should open quickly on iOS > 4.</p>
+	<div class="test">
+		<select>
+			<option>Banana</option>
+			<option>Apple</option>
+		</select>
 	</div>
 </body> 
 </html>
