@@ -3,9 +3,10 @@
 <head> 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
 <style type="text/css"> 
-	p { font-family: sans-serif; }
+	p, label { font-family: sans-serif; }
 	.test { text-align: center; }
-	input { height: 3em; width: 10em; }
+	input[type=text] { height: 3em; width: 10em; }
+	label { display: block; background: gray; line-height: 2em; display: inline-block; font-weight: bold; }
 
 	/* Disable certain interactions on touch devices */
 	body { -webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-select: none; -webkit-highlight: none; -webkit-tap-highlight-color: rgba(0,0,0,0); }
@@ -21,7 +22,7 @@
 	<p>FastClick is instantiated on the body element, but the <code>input</code> element below will not receive fast clicks. Instead <code>focus()</code> will be called on the input element when <code>touchend</code> fires.</p>
 	<p>The keyboard will still appear after delay on iOS 4 or earlier, however.</p>
 	<div class="test">
-		<input type="text" placeholder="Tap me">
+		<input type="text" id="tap-me" placeholder="Tap me">
 	</div>
 	<p>The same is true for the <code>select</code> element. It should open quickly on iOS > 4.</p>
 	<div class="test">
@@ -30,5 +31,9 @@
 			<option>Apple</option>
 		</select>
 	</div>
+	<p>The text below is a <code>label</code> for the text input element above. FastClick should automatically resolve the ID in the <code>for</code> attribute and trigger focus on the input element. This doesn't work on iOS 4, however (with or without FastClick).</p>
+	<label for="tap-me">I'm a label - tap me</label>
+	<p>Checkbox labels don't work on iOS 4, but with FastClick, they do!</p>
+	<input type="checkbox" id="check-me" /> <label for="check-me">I'm a label - tap me</label>
 </body> 
 </html>

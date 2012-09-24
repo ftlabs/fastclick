@@ -14,13 +14,15 @@
 
 	var
 
+		android = navigator.userAgent.indexOf('Android') > 0,
+
 
 		/**
 		 * Earlier versions of Chrome for Android don't report themselves as "Chrome" but "CrMo" - check for both.
 		 *
 		 * @type boolean
 		 */
-		chromeAndroid = /Android.+Chrome|CrMo/.test(navigator.userAgent),
+		chromeAndroid = android && (/Chrome|CrMo/).test(navigator.userAgent),
 
 
 		/**
@@ -179,7 +181,7 @@
 			 * @returns {boolean}
 			 */
 			onTouchEnd = function(event) {
-				var targetElement, targetCoordinates, clickEvent;
+				var targetElement, forElement, targetCoordinates, clickEvent;
 
 				if (!trackingClick) {
 					return true;
@@ -206,11 +208,17 @@
 					targetElement = targetElement.parentElement;
 				}
 
-				if (needsFocus(targetElement)) {
-					if (document.activeElement) {
-						document.activeElement.blur();
-					}
+				if (targetElement.nodeName.toLowerCase() === 'label' && targetElement.htmlFor) {
+					forElement = document.getElementById(targetElement.htmlFor);
+					if (forElement) {
+						targetElement.focus();
+						if (android) {
+							return false;
+						}
 
+						targetElement = forElement;
+					}
+				} else if (needsFocus(targetElement)) {
 					targetElement.focus();
 					return false;
 				}
