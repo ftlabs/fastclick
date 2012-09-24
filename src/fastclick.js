@@ -39,14 +39,27 @@
 	 */
 	function needsClick(target) {
 		switch (target.nodeName.toLowerCase()) {
+			case 'label':
+			case 'video':
+				return true;
+			default:
+				return (/\bneedsclick\b/).test(target.className);
+		}
+	}
+
+	/**
+	 * Determine whether a given element requires a call to focus to simulate click into element.
+	 * @param  {Element} target target DOM element.
+	 * @return {boolean}  Returns true if the element requires a call to focus to simulate native click.
+	 */
+	function needsFocus(target) {
+		switch(target.nodeName.toLowerCase()) {
 			case 'textarea':
 			case 'select':
 			case 'input':
-			case 'label':
-			case 'video':
-			return true;
+				return true;
 			default:
-			return (/\bneedsclick\b/).test(target.className);
+				return (/\bneedsfocus\b/).test(target.className);
 		}
 	}
 
@@ -200,13 +213,19 @@
 					return false;
 				}
 
-				// Synthesise a click event, with an extra attribute so it can be tracked
-				clickEvent = document.createEvent('MouseEvents');
-				clickEvent.initMouseEvent('click', true, true, window, 1, 0, 0, targetCoordinates.x, targetCoordinates.y, false, false, false, false, 0, null);
-				clickEvent.forwardedTouchEvent = true;
-				targetElement.dispatchEvent(clickEvent);
+				if (needsFocus(targetElement)) {
+					targetElement.focus();
+				} else {
+					// Synthesise a click event, with an extra attribute so it can be tracked
+					clickEvent = document.createEvent('MouseEvents');
+					clickEvent.initMouseEvent('click', true, true, window, 1, 0, 0, targetCoordinates.x, targetCoordinates.y, false, false, false, false, 0, null);
+					clickEvent.forwardedTouchEvent = true;
+					targetElement.dispatchEvent(clickEvent);
+					
+				}
 
 				event.preventDefault();
+				
 				return false;
 			},
 
