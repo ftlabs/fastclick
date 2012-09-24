@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+    p, .test { font-family: sans-serif; }
+    .test { margin: 1em 4em; line-height: 4em; border: 1px solid black; font-size: 2em; text-align: center; }
+    .test.pressed {border:inset 2px #CCC;}
+    /* Disable certain interactions on touch devices */
+    body { -webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-select: none; -webkit-highlight: none; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+</style>
+<script type="application/javascript" src="../src/fastclick.js"></script>
+<script type="application/javascript">
+    window.addEventListener('load', function() {
+
+        //Layer A
+        new FastClick(document.getElementById('fastclick'));
+
+        //Layer B
+        new FastClick(document.getElementById('fastclick-css'), {
+            cssClass: "pressed",
+            cssDelay: 50
+        });
+
+        Array.prototype.forEach.call(document.getElementsByClassName('test'), function(testEl) {
+            testEl.addEventListener('click', function() {
+                testEl.style.backgroundColor = testEl.style.backgroundColor ? '' : 'YellowGreen';
+            }, false)
+        });
+    }, false);
+</script>
+</head>
+<body>
+
+    <p>Layer A is enhanced with FastClick, and will fire the click handler with no delay.</p>
+
+    <p>Layer B is also enhanced with FastClick, but has an added css property .pressed with a delay of 50 ms. This is useful from making the element feel more native when scrolling vertically through a page.</p>
+    <p>The layers will behave normally on platforms that don't support touch events.</p>
+    <div>
+        <div class="test" id="fastclick">A</div>
+        <div class="test" id="fastclick-css">B</div>
+    </div>
+</body>
+</html>
