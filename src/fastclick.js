@@ -69,6 +69,46 @@
 		return document.elementFromPoint(x, y);
 	}
 
+    /**
+     * Removes a class from the given element or it's parent.
+     * 
+     * @param  {HTMLElement} element
+     * @param {string} cssClass
+     * @return {null} 
+     */
+    function removeClass(element, cssClass){
+
+        // If it's a text node target the parent 
+        if (element.nodeType === Node.TEXT_NODE) {
+            element = element.parentElement;
+        }
+
+        if (cssClass) {
+            var reg = new RegExp('(\\s|^)' + cssClass + '(\\s|$)');
+            element.className = element.className.replace(reg, ' ');
+        }
+        
+    }
+
+    /**
+     * Adds a class to the given element or it's parent.
+     * 
+     * @param  {HTMLElement} element
+     * @param {string} cssClass
+     * @return {null} 
+     */
+    function addClass(element, cssClass){
+
+        // If it's a text node target the parent 
+        if (element.nodeType === Node.TEXT_NODE) {
+            element = element.parentElement;
+        }
+
+        if (cssClass) {
+            element.className += " " + cssClass;
+        }
+    }
+
 
 	/**
 	 * Instantiate fast-clicking listeners on the specificed layer.
@@ -76,7 +116,7 @@
 	 * @constructor
 	 * @param {Element} layer The layer to listen on
 	 */
-	function FastClick(layer) {
+	function FastClick(layer, options) {
 		var
 
 
@@ -110,6 +150,36 @@
 			bound = Math.pow(37, 2),
 
 
+            /**
+            * The element that is currently being interacted with
+            *
+            *  @type Object
+            */
+            currentTargetElement,
+
+
+            /**
+             * The timer for cssDelay option
+             *
+             * @type Object
+             */
+            cssDelayTimer,
+
+
+            /**
+            * Calculates the target cordinates
+            *
+            * @param {Object} [click] [x,y and scrollX, scrollY]
+            * @returns {Object} [x, y]
+            */
+            getTargetCordinates = function(click) {
+                return {
+                    x: click.x - click.scrollX,
+                    y: click.y - click.scrollY
+                };
+            },
+
+
 			/**
 			 * On touch start, record the position and scroll offset.
 			 *
@@ -117,6 +187,8 @@
 			 * @returns {boolean}
 			 */
 			onTouchStart = function(event) {
+                var targetCoordinates;
+
 				trackingClick = true;
 
 				clickStart.x = event.targetTouches[0].pageX;
@@ -130,6 +202,22 @@
 				clickStart.scrollX = window.pageXOffset;
 				clickStart.scrollY = window.pageYOffset;
 
+                //Don't bother getting the element if we don't have to do anything with it
+                if(!options.cssClass) return true;
+
+                targetCoordinates = getTargetCordinates(clickStart);
+                currentTargetElement = eleAtWindowPosition(targetCoordinates.x, targetCoordinates.y);
+
+                if(currentTargetElement) {
+
+                    // If there's a delay schedule it
+                    if(options.cssDelay){ 
+                        cssDelayTimer = setTimeout(function(){
+                            addClass(currentTargetElement, options.cssClass);
+                        }, options.cssDelay);
+                    } else addClass(currentTargetElement, options.cssClass);
+                }
+
 				return true;
 			},
 
@@ -141,6 +229,7 @@
 			 * @returns {boolean}
 			 */
 			onTouchMove = function(event) {
+
 				if (!trackingClick) {
 					return true;
 				}
@@ -154,6 +243,15 @@
 				if (Math.abs(window.pageXOffset - clickStart.scrollX) > scrollBoundary || Math.abs(window.pageYOffset - clickStart.scrollY) > scrollBoundary) {
 					trackingClick = false;
 				}
+
+                // Don't bother messing with the element if not needed
+                if(!options.cssClass) return true;
+
+                // If moved before the class was added cancel it
+                if(options.cssDelay) clearTimeout(cssDelayTimer);
+
+                // Remove the css class if the click will not be registered
+                removeClass(currentTargetElement, options.cssClass);
 
 				return true;
 			},
@@ -175,10 +273,7 @@
 				trackingClick = false;
 
 				// Set up the coordinates to match
-				targetCoordinates = {
-					x: clickStart.x - clickStart.scrollX,
-					y: clickStart.y	- clickStart.scrollY
-				};
+				targetCoordinates = getTargetCordinates(clickStart);
 
 				// Derive the element to click as a result of the touch.
 				targetElement = eleAtWindowPosition(targetCoordinates.x, targetCoordinates.y);
@@ -207,6 +302,15 @@
 				targetElement.dispatchEvent(clickEvent);
 
 				event.preventDefault();
+
+                if(!options.cssClass) return false;
+
+                // If ended before the class was added cancel it
+                if(options.cssDelay) clearTimeout(cssDelayTimer);
+
+                // Remove the css class because we are done clicking
+                removeClass(currentTargetElement, options.cssClass);
+
 				return false;
 			},
 
@@ -216,6 +320,14 @@
 			 */
 			onTouchCancel = function() {
 				trackingClick = false;
+
+                if(!options.cssClass) return;
+
+                // If cancelled before the class was added cancel it
+                if(options.cssDelay) clearTimeout(cssDelayTimer);
+
+                // Remove the css class because we are no longer clicking
+                removeClass(currentTargetElement, options.cssClass);
 			},
 
 
@@ -228,7 +340,7 @@
 			 * @returns {boolean}
 			 */
 			onClick = function(event) {
-				var targetElement;
+				var targetElement, targetCoordinates;
 
 				if (event.forwardedTouchEvent) {
 					return true;
@@ -238,8 +350,8 @@
 				if (!event.cancelable) {
 					return true;
 				}
-
-				targetElement = eleAtWindowPosition(clickStart.x - clickStart.scrollX, clickStart.y - clickStart.scrollY);
+                targetCoordinates = getTargetCordinates(clickStart);
+				targetElement = eleAtWindowPosition(targetCoordinates.x, targetCoordinates.y);
 
 				// Derive and check the target element to see whether the click needs to be permitted;
 				// unless explicitly enabled, prevent non-touch click events from triggering actions,

@@ -41,6 +41,28 @@ window.addEventListener('load', function() {
 }, false);
 ```
 
+### Options
+
+Fastclick supports a second, optional, options parameter. With the following options: 
+
+| name                   | default |  description                         |
+|:-----------------------------------|:--------------------------|-----------------|
+| cssClass    | null         | css class to be added when the user touches the element |
+| cssDelay          | null          | delay in ms for the css class to be added (ex: 50, 100) |
+
+These options are useful for making the element feel more like a native one when scrolling vertically through a page.
+
+####Example
+
+```js
+window.addEventListener('load', function() {
+    new FastClick(document.body, {
+        cssClass: "pressed",
+        cssDelay: 50
+    });
+}, false);
+```
+
 ### Google Closure Compiler
 
 FastClick supports compilation with `ADVANCED_OPTIMIZATIONS` ('advanced mode'), which should reduce its size by about 70% (60% gzipped). Note that exposure of the `FastClick` variable isn't forced therefore you must compile it along with all of your code.
@@ -60,6 +82,7 @@ This is where the `needsclick` class comes in. Add the class to any element that
 FastClick is designed to cope with many different browser oddities. Here are some examples to illustrate this:
 
 * [basic use](http://ftlabs.github.com/fastclick/examples/layer.html) showing the increase in perceived responsiveness
+* [css options use](http://ftlabs.github.com/fastclick/examples/cssclass.html) showing the css class options
 * [triggering focus](http://ftlabs.github.com/fastclick/examples/focus.html) on an input element from a `click` handler
 * [input element](http://ftlabs.github.com/fastclick/examples/input.html) which never receives fast clicks
 
