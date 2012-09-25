@@ -1,19 +1,15 @@
 {
   "name": "fastclick",
   "version": "0.1.0",
-  "author": "FT Labs",
+  "author": "FT Labs <enquiries@labs.ft.com> (http://labs.ft.com/)",
   "description": "Polyfill to remove click delays on browsers with touch UIs.",
-  "contributors": [ 
-    {
-      "name": "Matthew Caruana Galizia"
-    },
-    {
-      "name": "Rowan Beentje"
-    }
+  "contributors": [
+    "Matthew Caruana Galizia",
+    "Rowan Beentje"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ftlabs/fastclick.git"
+    "url": "git://github.com/ftlabs/fastclick.git"
   },
   "keywords": [
     "fastclick",
@@ -23,5 +19,6 @@
     "click",
     "delay"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://github.com/ftlabs/fastclick"
 }
