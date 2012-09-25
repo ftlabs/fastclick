@@ -1,0 +1,24 @@
+{
+  "name": "fastclick",
+  "version": "1.0.0",
+  "author": "FT Labs",
+  "description": "a simple zero-configuration command-line http server",
+  "contributors": [ 
+    {
+      "name": "Matthew Caruana Galizia"
+    },
+    {
+      "name": "Rowan Beentje"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ftlabs/fastclick.git"
+  },
+  "keywords": [
+    "fastclick",
+    "mobile",
+    "touch"
+  ],
+  "license": "MIT"
+}
