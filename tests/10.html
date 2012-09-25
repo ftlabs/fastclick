@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+	p { font-family: sans-serif; }
+	textarea { width: 25em; height: 5em; }
+</style>
+<script type="application/javascript" src="../src/fastclick.js"></script>
+<script type="application/javascript">
+	window.addEventListener('load', function() {
+		new FastClick(document.body);
+		document.getElementById('select').addEventListener('focus', function(event) {
+			event.target.setSelectionRange(0, event.target.value.length);
+		}, false);
+	}, false);
+</script>
+</head>
+<body>
+	<textarea>FastClick is instantiated on the document body. Try and select the text in this textarea.</textarea>
+	<br><br>
+	<textarea id="select">The text in this textarea should be selected automatically when focussed.</textarea>
+	<p>Now try and select the text in this paragraph.</p>
+</body>
+</html>
