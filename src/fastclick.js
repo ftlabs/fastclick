@@ -14,6 +14,12 @@
 
 	var
 
+
+		/**
+		 * Android requires an exception for labels.
+		 *
+		 * @type boolean
+		 */
 		android = navigator.userAgent.indexOf('Android') > 0,
 
 
@@ -30,7 +36,7 @@
 		 *
 		 * @type number
 		 */
-		scrollBoundary = navigator.userAgent.indexOf('PlayBook') === -1 ? 5 : 20;
+		scrollBoundary = (android || (navigator.userAgent.indexOf('PlayBook') === -1)) ? 5 : 20;
 
 
 	/**
