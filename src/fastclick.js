@@ -51,6 +51,7 @@
 
 	/**
 	 * Determine whether a given element requires a call to focus to simulate click into element.
+	 *
 	 * @param  {Element} target target DOM element.
 	 * @return {boolean}  Returns true if the element requires a call to focus to simulate native click.
 	 */
@@ -58,8 +59,19 @@
 		switch(target.nodeName.toLowerCase()) {
 			case 'textarea':
 			case 'select':
-			case 'input':
 				return true;
+			case 'input':
+				switch (target.type) {
+					case 'button':
+					case 'checkbox':
+					case 'file':
+					case 'image':
+					case 'radio':
+					case 'submit':
+						return false;
+					default:
+						return true;
+				}
 			default:
 				return (/\bneedsfocus\b/).test(target.className);
 		}
