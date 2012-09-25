@@ -1,8 +1,8 @@
 {
   "name": "fastclick",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "FT Labs",
-  "description": "a simple zero-configuration command-line http server",
+  "description": "Polyfill to remove click delays on browsers with touch UIs.",
   "contributors": [ 
     {
       "name": "Matthew Caruana Galizia"
@@ -18,7 +18,10 @@
   "keywords": [
     "fastclick",
     "mobile",
-    "touch"
+    "touch",
+    "tap",
+    "click",
+    "delay"
   ],
   "license": "MIT"
 }
