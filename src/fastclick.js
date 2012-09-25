@@ -78,6 +78,7 @@
 					default:
 						return true;
 				}
+				break;
 			default:
 				return (/\bneedsfocus\b/).test(target.className);
 		}
