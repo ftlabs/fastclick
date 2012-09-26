@@ -47,7 +47,8 @@ Fastclick supports a second, optional, options parameter. With the following opt
 
 | name                   | default |  description                         |
 |:-----------------------------------|:--------------------------|-----------------|
-| cssClass    | null         | css class to be added when the user touches the element |
+| startCSSClass    | null         | css class to be added when the user touches the element |
+| endCSSClass    | null         | css class to be added when the touch ends |
 | cssDelay          | null          | delay in ms for the css class to be added (ex: 50, 100) |
 
 These options are useful for making the element feel more like a native one when scrolling vertically through a page.
