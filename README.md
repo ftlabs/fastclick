@@ -58,7 +58,8 @@ These options are useful for making the element feel more like a native one when
 ```js
 window.addEventListener('load', function() {
     new FastClick(document.body, {
-        cssClass: "pressed",
+        startCSSClass: "pressed",
+        endCSSClass: "unpressed",
         cssDelay: 50
     });
 }, false);
