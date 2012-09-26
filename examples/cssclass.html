@@ -5,7 +5,57 @@
 <style type="text/css">
     p, .test { font-family: sans-serif; }
     .test { margin: 1em 4em; line-height: 4em; border: 1px solid black; font-size: 2em; text-align: center; }
-    .test.pressed {border:inset 2px #CCC;}
+    /* Class added on touchstart event */
+    .test.pressed { 
+        border:inset 2px #CCC;
+        opacity: 1;
+
+        -webkit-animation:fadeOut ease-in 1;
+        -moz-animation:fadeOut ease-in 1;
+        -o-animation:fadeOut ease-in 1;
+        animation:fadeOut ease-in 1;
+        
+        -webkit-animation-fill-mode:forwards;
+        -moz-animation-fill-mode:forwards;
+        -o-animation-fill-mode:forwards;
+        animation-fill-mode:forwards;
+
+        -webkit-animation-duration:.1s;
+        -moz-animation-duration:.1s;
+        -o-animation-duration:.1s;
+        animation-duration:.1s;
+    }
+    /* Class added on touchend/touchmove/touchcancel */
+    .test.unpressed { 
+        opacity: .5;
+
+        -webkit-animation:fadeIn ease-in 1;
+        -moz-animation:fadeIn ease-in 1;
+        -o-animation:fadeIn ease-in 1;
+        animation:fadeIn ease-in 1;
+        
+        -webkit-animation-fill-mode:forwards;
+        -moz-animation-fill-mode:forwards;
+        -o-animation-fill-mode:forwards;
+        animation-fill-mode:forwards;
+
+        -webkit-animation-duration:.1s;
+        -moz-animation-duration:.1s;
+        -o-animation-duration:.1s;
+        animation-duration:.1s;
+    }
+
+    /* CSS3 Animations */
+    @-webkit-keyframes fadeIn { from { opacity:.5; } to { opacity:1; } }
+    @-moz-keyframes fadeIn { from { opacity:.5; } to { opacity:1; } }
+    @-o-keyframes fadeIn { from { opacity:.5; } to { opacity:1; } }
+    @keyframes fadeIn { from { opacity:.5; } to { opacity:1; } }
+
+    @-webkit-keyframes fadeOut { from { opacity:1; } to { opacity:.5; } }
+    @-moz-keyframes fadeOut { from { opacity:1; } to { opacity:.5; } }
+    @-o-keyframes fadeOut { from { opacity:1; } to { opacity:.5; } }
+    @keyframes fadeOut { from { opacity:1; } to { opacity:.5; } }
+
     /* Disable certain interactions on touch devices */
     body { -webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-select: none; -webkit-highlight: none; -webkit-tap-highlight-color: rgba(0,0,0,0); }
 </style>
@@ -18,7 +68,8 @@
 
         //Layer B
         new FastClick(document.getElementById('fastclick-css'), {
-            cssClass: "pressed",
+            startCSSClass: "pressed",
+            endCSSClass: "unpressed",
             cssDelay: 50
         });
 
@@ -34,7 +85,7 @@
 
     <p>Layer A is enhanced with FastClick, and will fire the click handler with no delay.</p>
 
-    <p>Layer B is also enhanced with FastClick, but has an added css property .pressed with a delay of 50 ms. This is useful from making the element feel more native when scrolling vertically through a page.</p>
+    <p>Layer B is also enhanced with FastClick, but has an added css property .pressed with a delay of 50 ms. This is useful for making the element feel more native when scrolling vertically through a page.</p>
     <p>The layers will behave normally on platforms that don't support touch events.</p>
     <div>
         <div class="test" id="fastclick">A</div>

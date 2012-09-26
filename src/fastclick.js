@@ -104,9 +104,31 @@
             element = element.parentElement;
         }
 
+        // Don't add the class again if it already has it
+        if(hasClass(element,cssClass)) return;
+
         if (cssClass) {
             element.className += " " + cssClass;
         }
+    }
+
+
+    /**
+     * Checks if element has the given css class
+     * 
+     * @param  {HTMLElement} element
+     * @param {string} cssClass
+     * @return {null} 
+     */
+    function hasClass(element, cssClass){
+
+        // If it's a text node target the parent 
+        if (element.nodeType === Node.TEXT_NODE) {
+            element = element.parentElement;
+        }
+
+       return element.className && new RegExp("(^|\\s)" + cssClass + "(\\s|$)").test(element.className);
+
     }
 
 
@@ -203,7 +225,7 @@
 				clickStart.scrollY = window.pageYOffset;
 
                 //Don't bother getting the element if we don't have to do anything with it
-                if(!options.cssClass) return true;
+                if(!options.startCSSClass) return true;
 
                 targetCoordinates = getTargetCordinates(clickStart);
                 currentTargetElement = eleAtWindowPosition(targetCoordinates.x, targetCoordinates.y);
@@ -213,9 +235,12 @@
                     // If there's a delay schedule it
                     if(options.cssDelay){ 
                         cssDelayTimer = setTimeout(function(){
-                            addClass(currentTargetElement, options.cssClass);
+                            addClass(currentTargetElement, options.startCSSClass);
                         }, options.cssDelay);
-                    } else addClass(currentTargetElement, options.cssClass);
+                    } else addClass(currentTargetElement, options.startCSSClass);
+
+                    // Remove the endCSSClass if it already has one
+                    if(options.endCSSClass) removeClass(currentTargetElement, options.endCSSClass);
                 }
 
 				return true;
@@ -245,13 +270,16 @@
 				}
 
                 // Don't bother messing with the element if not needed
-                if(!options.cssClass) return true;
+                if(!options.startCSSClass) return true;
 
                 // If moved before the class was added cancel it
                 if(options.cssDelay) clearTimeout(cssDelayTimer);
 
+                // Leave a class behind for possible CSS3 animations
+                if(options.endCSSClass) addClass(currentTargetElement, options.endCSSClass);
+
                 // Remove the css class if the click will not be registered
-                removeClass(currentTargetElement, options.cssClass);
+                removeClass(currentTargetElement, options.startCSSClass);
 
 				return true;
 			},
@@ -303,13 +331,16 @@
 
 				event.preventDefault();
 
-                if(!options.cssClass) return false;
+                if(!options.startCSSClass) return false;
 
                 // If ended before the class was added cancel it
                 if(options.cssDelay) clearTimeout(cssDelayTimer);
 
+                // Leave a class behind for possible CSS3 animations
+                if(options.endCSSClass) addClass(currentTargetElement, options.endCSSClass);
+
                 // Remove the css class because we are done clicking
-                removeClass(currentTargetElement, options.cssClass);
+                removeClass(currentTargetElement, options.startCSSClass);
 
 				return false;
 			},
@@ -321,13 +352,16 @@
 			onTouchCancel = function() {
 				trackingClick = false;
 
-                if(!options.cssClass) return;
+                if(!options.startCSSClass) return;
 
                 // If cancelled before the class was added cancel it
                 if(options.cssDelay) clearTimeout(cssDelayTimer);
 
+                // Leave a class behind for possible CSS3 animations
+                if(options.endCSSClass) addClass(currentTargetElement, options.endCSSClass);
+
                 // Remove the css class because we are no longer clicking
-                removeClass(currentTargetElement, options.cssClass);
+                removeClass(currentTargetElement, options.startCSSClass);
 			},
 
 
