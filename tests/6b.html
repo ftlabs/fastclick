@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="application/javascript" src="../lib/fastclick.js"></script>
+	<meta charset=utf-8 />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<style type="text/css">
+		body {
+			font-size: 16px;
+		}
+
+		#form {
+			width: 400px;
+			border: 1px solid black;
+			border-radius: 14px;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+
+		#form textarea {
+			width: 200px;
+			height: 100px;
+		}
+
+		#form .buttons {
+			margin-top: 20px;
+			text-align: right;
+		}
+	</style>
+	<title>#6b</title>
+	<script type="application/javascript">
+		$(function() {
+			var clicks = 0;
+			$('body').on('click', 'button', function() {
+				$('#report').text("click " + (++clicks));
+			});
+
+			new FastClick(document.body);
+		});
+	</script>
+</head>
+<body>
+	<p>This test case is designed for Chrome on Androind 4.1 on the Nexus 7.</p>
+	<p>Tap the <code>textarea</code> so that it gains focus. The browser should zoom the page. Once that happens the coordinates for every tap will be off until the page is zoomed back to the normal level.</p>
+	<div id="form">
+		<div id="report">&nbsp;</div>
+		<textarea></textarea>
+		<div class="buttons">
+			<button>Hello World</button>
+		</div>
+	</div>
+</body>
+</html>
