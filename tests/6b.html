@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="application/javascript" src="../lib/fastclick.js"></script>
+	<meta charset=utf-8 />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<style type="text/css">
+		body {
+			font-size: 16px;
+		}
+
+		#form {
+			width: 400px;
+			border: 1px solid black;
+			border-radius: 14px;
+			padding: 20px;
+			box-sizing: border-box;
+		}
+
+		#form textarea {
+			width: 200px;
+			height: 100px;
+		}
+
+		#form .buttons {
+			margin-top: 20px;
+			text-align: right;
+		}
+	</style>
+	<title>#6b</title>
+	<script type="application/javascript">
+		$(function() {
+			var clicks = 0;
+			$('body').on('click', 'button', function() {
+				$('#report').text("click " + (++clicks));
+			});
+
+			new FastClick(document.body);
+		});
+	</script>
+</head>
+<body>
+	<p>This test case is designed for Chrome on Android 4.1 on the Nexus 7.</p>
+	<p>Tap the <code>textarea</code> so that it gains focus. The browser should zoom the page. Once that happens the coordinates for every tap will be off until the page is zoomed back to the normal level.</p>
+	<div id="form">
+		<div id="report">&nbsp;</div>
+		<textarea></textarea>
+		<div class="buttons">
+			<button>Hello World</button>
+		</div>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed mauris in nisi dignissim ultricies sit amet id sapien. Curabitur venenatis, justo sed iaculis molestie, velit nisl consectetur metus, at vulputate nulla nisl et urna. Ut et urna a mauris malesuada mollis non vel ante. Nulla volutpat tellus sed elit varius ultricies. Nam euismod pellentesque felis sed adipiscing. Morbi ultricies risus a diam blandit a tincidunt tellus rhoncus. Cras facilisis pulvinar ante vitae pretium. Ut non orci sem. Integer fringilla est in tortor consectetur porta. Mauris ullamcorper neque sed arcu ultrices accumsan. Morbi condimentum metus eu sem volutpat auctor. Nam posuere fermentum est sed aliquet. Maecenas mauris mauris, auctor hendrerit pellentesque eget, fringilla et nibh. Pellentesque euismod urna sed eros feugiat egestas. Pellentesque volutpat viverra sapien, in tincidunt ipsum tempor pharetra. Suspendisse fermentum posuere luctus.</p>
+		<p>Duis sed accumsan est. Etiam augue odio, vulputate a sollicitudin et, ornare ultricies massa. Nullam non lectus velit. Morbi consectetur pretium elit sed mollis. Sed id sem risus, vitae dapibus diam. Proin arcu metus, interdum nec pulvinar sed, auctor nec turpis. Aenean tempus, turpis sit amet pulvinar dapibus, erat arcu ornare enim, sit amet ornare lacus enim ut mauris. Pellentesque hendrerit fermentum massa vitae hendrerit. Morbi et velit libero. Nulla a fermentum nibh.</p>
+		<p>Aliquam orci turpis, dictum et rhoncus ac, imperdiet in enim. Nullam at nunc neque, a mollis urna. Phasellus gravida metus vitae turpis tempus vitae dictum ante sodales. Etiam lobortis vulputate ipsum, nec tincidunt velit volutpat nec. Pellentesque odio nibh, mattis vitae ultricies a, porta quis sapien. Curabitur rhoncus, erat ac bibendum porta, ante turpis semper nibh, porta dapibus urna ligula eu lorem. Cras lectus mi, volutpat a rhoncus et, faucibus non nibh. Ut non leo vitae tellus malesuada pharetra eget vitae lorem. Maecenas semper laoreet elit, non pulvinar leo mollis at. Mauris at rhoncus augue. Pellentesque ornare sodales nulla vitae pretium. Vivamus tempus suscipit neque vel auctor.</p>
+		<p>Maecenas blandit facilisis nulla a dignissim. In sem nulla, tincidunt id congue nec, volutpat a magna. Cras eleifend porta sodales. Suspendisse felis eros, aliquet sed faucibus sed, lacinia pretium magna. Vestibulum consequat neque non dui malesuada tempus. Quisque pharetra tristique elit consectetur tincidunt. Aenean justo ipsum, lacinia vitae fringilla nec, pulvinar at massa. Integer a mauris ligula, in adipiscing nisl. Curabitur urna massa, luctus non ullamcorper ut, auctor ac mauris. Curabitur malesuada sem ut ipsum pellentesque eu consectetur magna egestas. Vestibulum lorem nibh, iaculis id iaculis eget, imperdiet eget lorem. Nunc quis lorem lorem.</p>
+		<p>Quisque vel molestie nibh. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ornare luctus sapien, vel scelerisque augue adipiscing in. Donec faucibus lobortis sollicitudin. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi rutrum sapien ut eros consequat dapibus. Etiam enim ligula, accumsan nec vestibulum sit amet, fermentum scelerisque est. Nunc in tincidunt quam. Praesent vitae sagittis odio. Aliquam malesuada, eros at adipiscing auctor, felis enim elementum magna, eget gravida arcu nisi ac enim. Pellentesque id vehicula velit. Aliquam dignissim, risus a adipiscing dapibus, nunc turpis adipiscing ligula, dictum sagittis augue ipsum non lacus. Curabitur felis elit, ullamcorper et gravida eget, elementum sed mauris. Maecenas luctus interdum molestie.</p>
+		<div class="buttons">
+			<button>Hello again</button>
+		</div>
+	</div>
+</body>
+</html>
