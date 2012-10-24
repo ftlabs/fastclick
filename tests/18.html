@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+<style type="text/css"> 
+	p, label { font-family: sans-serif; }
+	.test { text-align: center; }
+	input[type=text] { height: 3em; width: 10em; }
+	label { display: block; background: gray; line-height: 2em; display: inline-block; font-weight: bold; }
+
+	/* Disable certain interactions on touch devices */
+	body { -webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-select: none; -webkit-highlight: none; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+</style> 
+<script type="application/javascript" src="../lib/fastclick.js"></script> 
+<script type="application/javascript">
+	window.addEventListener('load', function () {
+		new FastClick(document.body);
+	}, false);
+</script> 
+</head> 
+<body>
+	<p>On focusing on the input text element, hitting go in the device keyboard should submit the form</p>
+	<div class="test">
+		<form action="http://google.com/search" method="GET">
+			<input type="text" id="query" name="q" placeholder="Tap me">
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+</body> 
+</html>
