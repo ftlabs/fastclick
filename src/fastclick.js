@@ -2,19 +2,41 @@
  * @preserve FastClick: polyfill to remove click delays on browsers with touch UIs.
  *
  * @copyright The Financial Times Limited [All Rights Reserved]
- * @licence MIT License (see LICENCE.txt)
+ * @license MIT License (see LICENCE.txt)
  * @codingstandard ftlabs-jslint
  */
 
 /*jslint browser:true*/
-/*global Node*/
+/*global Node, define*/
 
-var FastClick = (function() {
+(function() {
 	'use strict';
 
 	var
 
-		scrollBoundary = navigator.userAgent.indexOf('PlayBook') === -1 ? 5 : 20;
+
+		/**
+		 * Android requires an exception for labels.
+		 *
+		 * @type boolean
+		 */
+		android = navigator.userAgent.indexOf('Android') > 0,
+
+
+		/**
+		 * Earlier versions of Chrome for Android don't report themselves as "Chrome" but "CrMo" - check for both.
+		 *
+		 * @type boolean
+		 */
+		chromeAndroid = android && (/Chrome|CrMo/).test(navigator.userAgent),
+
+
+		/**
+		 * Playbook requires a greater scroll boundary.
+		 *
+		 * @type number
+		 */
+		scrollBoundary = (android || (navigator.userAgent.indexOf('PlayBook') === -1)) ? 5 : 20;
 
 
 	/**
@@ -24,12 +46,61 @@ var FastClick = (function() {
 	 * @returns {boolean} Returns true if the element needs a native click
 	 */
 	function needsClick(target) {
-		return (/\bneedsclick\b/).test(target.className) || ({
-			'select': true,
-			'input' : true,
-			'label' : true,
-			'video' : true
-		})[target.nodeName.toLowerCase()];
+		switch (target.nodeName.toLowerCase()) {
+			case 'label':
+			case 'video':
+				return true;
+			default:
+				return (/\bneedsclick\b/).test(target.className);
+		}
+	}
+
+	/**
+	 * Determine whether a given element requires a call to focus to simulate click into element.
+	 *
+	 * @param  {Element} target target DOM element.
+	 * @return {boolean}  Returns true if the element requires a call to focus to simulate native click.
+	 */
+	function needsFocus(target) {
+		switch(target.nodeName.toLowerCase()) {
+			case 'textarea':
+			case 'select':
+				return true;
+			case 'input':
+				switch (target.type) {
+					case 'button':
+					case 'checkbox':
+					case 'file':
+					case 'image':
+					case 'radio':
+					case 'submit':
+						return false;
+					default:
+						return true;
+				}
+				break;
+			default:
+				return (/\bneedsfocus\b/).test(target.className);
+		}
+	}
+
+
+	/**
+	 * Retrieve an element based on coordinates within the window.
+	 *
+	 * @param {number} x
+	 * @param {number} y
+	 * @return {Element}
+	 */
+	function eleAtWindowPosition(x, y) {
+
+		// On Chrome for Android, amend coordinates by the device pixel ratio.
+		if (chromeAndroid && window.devicePixelRatio) {
+			x *= window.devicePixelRatio;
+			y *= window.devicePixelRatio;
+		}
+
+		return document.elementFromPoint(x, y);
 	}
 
 
@@ -41,6 +112,12 @@ var FastClick = (function() {
 	 */
 	function FastClick(layer) {
 		var
+
+
+			/**
+			 * @type Function
+			 */
+			oldOnClick,
 
 
 			/**
@@ -123,7 +200,7 @@ var FastClick = (function() {
 			 * @returns {boolean}
 			 */
 			onTouchEnd = function(event) {
-				var targetElement, targetCoordinates, clickEvent;
+				var targetElement, forElement, targetCoordinates, clickEvent;
 
 				if (!trackingClick) {
 					return true;
@@ -138,7 +215,7 @@ var FastClick = (function() {
 				};
 
 				// Derive the element to click as a result of the touch.
-				targetElement = document.elementFromPoint(targetCoordinates.x, targetCoordinates.y);
+				targetElement = eleAtWindowPosition(targetCoordinates.x, targetCoordinates.y);
 
 				// If we're not clicking anything exit early
 				if (!targetElement) {
@@ -148,6 +225,21 @@ var FastClick = (function() {
 				// If the targetted node is a text node, target the parent instead
 				if (targetElement.nodeType === Node.TEXT_NODE) {
 					targetElement = targetElement.parentElement;
+				}
+
+				if (targetElement.nodeName.toLowerCase() === 'label' && targetElement.htmlFor) {
+					forElement = document.getElementById(targetElement.htmlFor);
+					if (forElement) {
+						targetElement.focus();
+						if (android) {
+							return false;
+						}
+
+						targetElement = forElement;
+					}
+				} else if (needsFocus(targetElement)) {
+					targetElement.focus();
+					return false;
 				}
 
 				// Prevent the actual click from going though - unless the target node is marked as requiring
@@ -164,6 +256,7 @@ var FastClick = (function() {
 				targetElement.dispatchEvent(clickEvent);
 
 				event.preventDefault();
+				
 				return false;
 			},
 
@@ -196,21 +289,21 @@ var FastClick = (function() {
 					return true;
 				}
 
-				targetElement = document.elementFromPoint(clickStart.x - clickStart.scrollX, clickStart.y - clickStart.scrollY);
+				targetElement = eleAtWindowPosition(clickStart.x - clickStart.scrollX, clickStart.y - clickStart.scrollY);
 
-				// Derive and check the target element to see whether the
-				// click needs to be permitted; unless explicitly enabled, prevent non-touch click events
-				// from triggering actions, to prevent ghost/doubleclicks.
+				// Derive and check the target element to see whether the click needs to be permitted;
+				// unless explicitly enabled, prevent non-touch click events from triggering actions,
+				// to prevent ghost/doubleclicks.
 				if (!targetElement || !needsClick(targetElement)) {
-
-					// Cancel the event
-					event.stopPropagation();
-					event.preventDefault();
 
 					// Prevent any user-added listeners declared on FastClick element from being fired.
 					if (event.stopImmediatePropagation) {
 						event.stopImmediatePropagation();
 					}
+
+					// Cancel the event
+					event.stopPropagation();
+					event.preventDefault();
 
 					return false;
 				}
@@ -239,11 +332,26 @@ var FastClick = (function() {
 		// FastClick's onClick handler. Fix this by pulling out the user-defined handler function and
 		// adding it as listener.
 		if (typeof layer.onclick === 'function') {
-			layer.addEventListener('click', layer.onclick, false);
+
+			// Android browser on at least 3.2 requires a new reference to the function in layer.onclick
+			// - the old one won't work if passed to addEventListener directly.
+			oldOnClick = layer.onclick;
+			layer.addEventListener('click', function(event) {
+				oldOnClick(event);
+			}, false);
 			layer.onclick = null;
 		}
 	}
 
-	return FastClick;
+	if (typeof define === 'function' && define.amd) {
 
+		// AMD. Register as an anonymous module.
+		define(function() {
+			return FastClick;
+		});
+	} else {
+
+		// Browser global
+		window.FastClick = FastClick;
+	}
 }());
