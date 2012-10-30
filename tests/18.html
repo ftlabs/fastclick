@@ -15,11 +15,15 @@
 <script type="application/javascript">
 	window.addEventListener('load', function () {
 		new FastClick(document.body);
+		document.getElementsByTagName('form')[0].addEventListener('submit', function(event) {
+			event.preventDefault();
+			console.log('Submit caught');
+		}, false);
 	}, false);
 </script> 
 </head> 
 <body>
-	<p>On focusing on the input text element, hitting go in the device keyboard should submit the form</p>
+	<p>On focusing on the input text element, hitting go in the device keyboard should submit the form. The actual submission will be prevented and instead 'Submit caught' will appear in the console.</p>
 	<div class="test">
 		<form action="http://google.com/search" method="GET">
 			<input type="text" id="query" name="q" placeholder="Tap me">
