@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="../lib/fastclick.js"></script>
+<style type="text/css"> 
+	p, label { font-family: sans-serif; }
+	input[type=text] { height: 3em; width: 10em; }
+	label { display: block; background: gray; margin-left: 2em; line-height: 2em; display: inline-block; font-weight: bold; }
+</style> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no">
+<script>
+$(function() {
+	$('#test-me').focus();
+	new FastClick(document.body);
+});
+
+/*
+window.addEventListener('load', function() {
+	document.getElementById('focus-me').focus();
+	new FastClick(document.body);
+}, false);
+*/
+</script>
+<title>#24</title>
+</head>
+<body>
+	<form action='fake'>
+		<input id="test-me" name="text" />
+		<div style='padding: 50px 0'>
+			<input type="radio" name="radio" id="x" checked />
+			<label for="x">This Is X</label>
+			<br>
+			<input type="radio" name="radio" id="y" />
+			<label for="y">This Is Y</label>
+		</div>
+	</form>
+</body>
+</html>

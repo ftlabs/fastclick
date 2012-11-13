@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+	p { font-family: sans-serif; }
+	input, code { font-family: monospace; }
+</style>
+<title>#23</title>
+<script type="application/javascript" src="../lib/fastclick.js"></script>
+<script type="application/javascript">
+	window.addEventListener('load', function() {
+		var i = 0;
+
+		new FastClick(document.body);
+		document.getElementById('alert-on-click').addEventListener('click', function() {
+			i++;
+			alert('Alert #' + i);
+		}, false);
+	}, false);
+</script>
+</head>
+<body>
+	<p>Tapping the first button will increment <code>i</code> and trigger an alert with the text <code>'Alert #' + i</code>.</p>
+	<p>Tapping on the first button should have absolutely no effect, but in iOS6 it will re-trigger the alert.</p>
+	<input type="button" id="alert-on-click" value="Button #1">
+	<br><br>
+	<input type="button" id="no-alert-on-click" value="Button #2">
+</body>
+</html>
