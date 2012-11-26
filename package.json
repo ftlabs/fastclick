@@ -7,6 +7,7 @@
     "Matthew Caruana Galizia",
     "Rowan Beentje"
   ],
+  "main": "lib/fastclick.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/ftlabs/fastclick.git"
