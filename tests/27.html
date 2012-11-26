@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+	p { font-family: sans-serif; }
+    .page { position: absolute; width: 200px; height: 150px; background-color:#eee; }
+    .page.next { background-color:#ccc; }
+    #btn { background-color:#ff00ff; }
+    #text {width: 100%; padding: 0; margin: 0; border: none; font-size: 22px; }
+    .animate { -webkit-transition: all .3s ease-out; }
+</style>
+<title>#27</title>
+<script type="application/javascript" src="../lib/fastclick.js"></script>
+<script type='application/javascript' src='http://code.jquery.com/jquery-1.8.2.js'></script>
+<script type="application/javascript">
+$(window).load(function() {
+	$(function() {
+		new FastClick(document.body);
+
+		$nextpage = $('.page.next');
+		$nextpage.css('-webkit-transform', 'translate(200px, 0) translateZ(0)');
+
+		$('#btn').click(function(e){
+			$('.page.next').addClass('animate').css('-webkit-transform', 'translate(0, 0) translateZ(0)');
+		});
+	});
+});
+</script>
+</head>
+<body>
+	<p>Clicking or tapping the <code>div</code> that says 'click me' should <em>not</em> trigger focus on the adjacent <code>input</code> element as or after it slides in.</p>
+	<div class="pages">
+		<div class="page">
+			<div id="btn">Click Me</div>
+		</div>
+		<div class="next page">
+			<input id="text" type="text" value="textbox 1">
+			<input id="text" type="text" value="textbox 2">
+		</div>
+	</div>
+</body>
+</html>
