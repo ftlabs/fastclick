@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="../lib/fastclick.js"></script>
+	<style type="text/css"> 
+		p { font-family: sans-serif; }
+		.test { background: pink; }
+	</style> 
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<script>
+		var f;
+
+		function create() {
+			f = new FastClick(document.body);
+		}
+
+		function destroy() {
+			if (f) {
+				f.destroy();
+			}
+		}
+
+		function add() {
+			document.getElementById('test-area').insertAdjacentHTML('beforeend', '<p class="test">Click me</p>');
+		}
+
+		window.addEventListener('load', function() {
+			document.body.addEventListener('click', function(event) {
+				var clicksEl = document.getElementById('clicks');
+				clicks.value = parseInt(clicks.value, 10) + 1;
+
+				if (event.target.classList.contains('test')) {
+					event.target.style.backgroundColor = event.target.style.backgroundColor ? '' : 'YellowGreen';
+				}
+			}, false);
+
+			document.getElementById('create').addEventListener('click', create, false);
+			document.getElementById('destroy').addEventListener('click', destroy, false);
+			document.getElementById('add').addEventListener('click', add, false);
+		}, false);
+	</script>
+	<title>#26</title>
+</head>
+<body>
+	<input type="button" id="create" value="Create new FastClick instance" /><br />
+	<input type="button" id="destroy" value="Destroy last FastClick instance" /><br />
+	<hr />
+	<p>Clicks: <input type="text" id="clicks" value="0" /></p>
+	<hr />
+	<input type="button" id="add" value="Add element" />
+	<hr />
+	<div id="test-area"></div>
+</body>
+</html>
