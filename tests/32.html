@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+	p { font-family: sans-serif; }
+	textarea { width: 25em; height: 15em; }
+</style>
+<title>#32</title>
+<script type="application/javascript" src="../lib/fastclick.js"></script>
+<script type="application/javascript">
+	window.addEventListener('load', function() {
+		new FastClick(document.body);
+		Array.prototype.forEach.call(document.getElementsByClassName('button'), function(button) {
+			button.addEventListener('click', function(event) {
+				console.log(event.target.nodeName + ' was tapped (forwarded: ' + (event.forwardedTouchEvent ? 'yes' : 'no') + ')');
+			}, false);
+		});
+	}, false);
+</script>
+</head>
+<body>
+<div class="appt-search-form no-height">
+	<div class="fancy">
+		<input type="hidden" class="apptPatient" name="patient" value="5004" data-shadow="false">
+		<div class="ui-hide-label">
+			<label for="apptType" class="ui-select">Appointment Type</label>
+			<div class="ui-select">
+				<div data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="th-list" data-iconpos="right" data-theme="a" class="ui-btn ui-btn-corner-all ui-btn-icon-right ui-btn-up-a">
+					<span class="ui-btn-inner ui-btn-corner-all">
+						<span class="ui-btn-text">
+							<span class="apptType">Appointment Type *</span>
+						</span>
+						<span class="ui-icon ui-icon-th-list ui-icon-shadow">&nbsp;</span>
+					</span>
+					<select class="apptType" name="apptType" id="apptType" data-shadow="false" data-icon="th-list">
+						<option value="-1" data-placeholder="true">Appointment Type</option>
+						<option value="5000">Sick Visit</option>
+						<option value="5509">9 months Well Visit</option>
+						<option value="5512">1 year Well Visit</option>
+						<option value="5515">15 months Well Visit</option>
+						<option value="5518">18 months Well Visit</option>
+					</select>
+				</div>
+			</div>
+			<label for="apptCalendar" class="ui-select">Physician</label>
+			<div class="ui-select">
+				<div data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="user-md" data-iconpos="right" data-theme="a" class="ui-btn ui-btn-up-a ui-btn-corner-all ui-btn-icon-right">
+					<span class="ui-btn-inner ui-btn-corner-all">
+						<span class="ui-btn-text">
+							<span class="apptCalendar">Physician</span>
+						</span>
+						<span class="ui-icon ui-icon-user-md ui-icon-shadow">&nbsp;</span>
+					</span>
+					<select class="apptCalendar" id="apptCalendar" data-shadow="false" data-icon="user-md">
+						<option value="-1" data-placeholder="true">Physician</option>
+						<option value="-1">Any</option>
+						<option value="5000">Dr. Jim</option>
+						<option value="5001">Dr. Wixler</option>
+						<option value="5002">Anya</option>
+						<option value="5003">Jada</option>
+					</select>
+				</div>
+			</div>
+			<label for="dateAfter" class="ui-input-text">Date</label>
+			<input class="dateAfter ui-input-text ui-body-a ui-corner-all ui-shadow-inset" id="dateAfter" type="date" data-icon="calendar">
+			<label for="apptTimeWindow" class="ui-select">Time of Day</label>
+			<div class="ui-select">
+				<div data-corners="true" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-icon="time" data-iconpos="right" data-theme="a" class="ui-btn ui-btn-up-a ui-btn-corner-all ui-btn-icon-right">
+					<span class="ui-btn-inner ui-btn-corner-all">
+						<span class="ui-btn-text">
+							<span class="apptTimeWindow">Time of Day</span>
+						</span>
+						<span class="ui-icon ui-icon-time ui-icon-shadow">&nbsp;</span>
+					</span>
+					<select class="apptTimeWindow" id="apptTimeWindow" data-shadow="false" data-icon="time">
+						<option value="0" data-placeholder="true">Time of Day</option>
+						<option value="0">Any</option>
+						<option value="1">Morning</option>
+						<option value="2">Afternoon</option>
+						<option value="3">Evening</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<span class="search btn-success">
+		<div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="a" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-a" aria-disabled="false">
+			<span class="ui-btn-inner ui-btn-corner-all">
+				<span class="ui-btn-text">Find Appointments</span>
+			</span>
+			<button class="btn-success ui-btn-hidden" aria-disabled="false">Find Appointments</button>
+		</div>
+	</span>
+</div>
+</body>
+</html>
