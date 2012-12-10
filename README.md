@@ -49,6 +49,14 @@ FastClick supports compilation with `ADVANCED_OPTIMIZATIONS` ('advanced mode'), 
 
 FastClick has AMD (Asynchronous Module Definition) support. This allows it to be lazy-loaded with an AMD loader, such as [RequireJS](http://requirejs.org/).
 
+### Component
+
+FastClick comes with support for installation via the [Component package manager](https://github.com/component/component).
+
+### NPM
+
+Installation via the [Node Package Manager](https://npmjs.org/package/fastclick) is supported, although Component is preferred as this is not strictly a Node packagage.
+
 ## Advanced
 
 Internally, FastClick uses `document.createEvent` to fire a synthetic `click` event as soon as `touchend` is fired by the browser. It then suppresses the additional `click` event created by the browser after that. In some cases, the non-synthetic `click` event created by the browser is required, as described in the [triggering focus example](http://ftlabs.github.com/fastclick/examples/focus.html).
