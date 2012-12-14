@@ -13,9 +13,9 @@
 		var i = 0;
 
 		new FastClick(document.body);
-		document.getElementById('alert-on-click').addEventListener('click', function() {
+		document.getElementById('alert-on-click').addEventListener('click', function(event) {
 			i++;
-			alert('Alert #' + i);
+			alert('Alert #' + i + ', on element with ID \'' + event.target.id + '\'.');
 		}, false);
 	}, false);
 </script>
