@@ -1,3 +1,5 @@
+## FT Labs, Google and Facebook will be hosting a discussion about making web apps agnostic to different input technologies at [Edge](http://edgeconf.com/), London, 9 February 2013.
+
 # FastClick
 
 FastClick is a simple, easy-to-use library for eliminating the 300ms delay between a physical tap and the firing of a `click` event on mobile browsers. The aim is to make your application feel less laggy and more responsive while avoiding any interference with your current logic.
@@ -12,7 +14,7 @@ The library has been deployed as part of the [FT Web App](http://app.ft.com/) an
 * Chrome on iOS 5 and upwards
 * Chrome on Android (ICS)
 * Opera Mobile 11.5 and upwards
-* Android Browser since Honeycomb
+* Android Browser since Android 2
 * PlayBook OS 1 and upwards
 
 FastClick doesn't attach any listeners on desktop browsers as it is not needed. Those that have been tested are:
@@ -48,6 +50,14 @@ FastClick supports compilation with `ADVANCED_OPTIMIZATIONS` ('advanced mode'), 
 ### AMD
 
 FastClick has AMD (Asynchronous Module Definition) support. This allows it to be lazy-loaded with an AMD loader, such as [RequireJS](http://requirejs.org/).
+
+### Component
+
+FastClick comes with support for installation via the [Component package manager](https://github.com/component/component).
+
+### NPM
+
+Installation via the [Node Package Manager](https://npmjs.org/package/fastclick) is supported, although Component is preferred as this is not strictly a Node packagage.
 
 ## Advanced
 

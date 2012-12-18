@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>#36</title>
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="telephone=no" name="format-detection" />
+		<style type="text/css">
+			p { font-family: sans-serif; }
+			input { height: 30px; }
+			p, input { margin: 0; padding: 0; }
+			#map {width: 450px; height: 400px; }
+		</style>
+		<script src="http://maps.google.com/maps/api/js?sensor=false&.js" type="application/javascript"></script>
+		<script src="http://google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox.js" type="application/javascript"></script>
+		<script src="../lib/fastclick.js" type="application/javascript"></script>
+		<script type="application/javascript">
+			window.addEventListener('load', function() {
+				   new FastClick(document.body);
+			
+				   var map;
+				   var elevator;
+				   var myOptions = {
+					   zoom: 6,
+					   center: new google.maps.LatLng(46.87916, -3.32910),
+					   mapTypeId: 'terrain'
+				   };
+				   map = new google.maps.Map(document.getElementById('map'), myOptions);
+				   var markers = [];
+				   
+				   // Add a listener for idle event and call getElevation on a random set of marker in the bound
+				   google.maps.event.addListener(map, 'idle', function()
+				   {
+					   var marker = new google.maps.Marker({
+						 position: new google.maps.LatLng(46.87916, -3.32910),
+						 map: map,
+						 title:"Hello World!"
+					   });
+					   
+					   var infowindow = new InfoBox({
+						   content: "Touch me on your iDevice"
+					   });
+					   
+					   google.maps.event.addListener(marker, 'click', function() {
+						 infowindow.open(map,marker);
+					   });
+				   });
+			}, false);
+		</script>
+	</head>
+	<body>
+		<p>Tap the map marker.</p>
+		<hr />
+		<div id="map"></div>
+	</body>
+</html>

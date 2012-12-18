@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+	p { font-family: sans-serif; }
+	input, code { font-family: monospace; }
+</style>
+<title>#23</title>
+<script type="application/javascript" src="../lib/fastclick.js"></script>
+<script type="application/javascript">
+
+	// This function is for sending a touch event to the button programatically
+	var sendTouchEnd = function() {
+		var event, button;
+
+		button = document.getElementById('alert-on-click');
+
+		event = document.createEvent('UIEvent');
+		event.initUIEvent('touchend', true, true);
+		event.changedTouches = [{
+			screenX: button.offsetLeft,
+			screenY: button.offsetTop,
+			clientX: button.offsetLeft,
+			clientY: button.offsetTop
+		}];
+
+		button.dispatchEvent(event);
+	};
+
+	window.addEventListener('load', function() {
+		var i = 0;
+
+		var log = function(event) {
+			console.log(event.type, event);
+		};
+
+		document.body.addEventListener('touchend', function(event) {
+			var clickEvent, touch = event.changedTouches[0];
+
+			log(event);
+
+			// Synthesise a click event, with an extra attribute so it can be tracked
+			clickEvent = document.createEvent('MouseEvents');
+			clickEvent.initMouseEvent('click', true, true, window, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY, false, false, false, false, 0, null);
+			clickEvent.synthesized = true;
+			event.target.dispatchEvent(clickEvent);
+		}, false);
+
+		document.getElementById('alert-on-click').addEventListener('click', function(event) {
+			i++;
+			alert('Alert #' + i + ', on element with ID \'' + event.target.id + '\'.');
+		}, false);
+	}, false);
+</script>
+</head>
+<body>
+	<p>At the start of this test, <code>i = 0</code>. Tapping the first button will increment <code>i</code> and trigger an alert with the text <code>'Alert #' + i</code>.</p>
+	<p>Tapping on the second button should have absolutely no effect, but in iOS6 it will re-trigger the alert.</p>
+	<input type="button" id="alert-on-click" value="Button #1">
+	<br><br>
+	<input type="button" id="no-alert-on-click" value="Button #2">
+</body>
+</html>

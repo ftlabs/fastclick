@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>#36</title>
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="telephone=no" name="format-detection" />
+		<style type="text/css">
+			p { font-family: sans-serif; }
+			input { height: 30px; }
+			p, input { margin: 0; padding: 0; }
+		</style>
+		<script src="../lib/fastclick.js" type="application/javascript"></script>
+		<script type="application/javascript">
+			window.addEventListener('load', function() {
+				new FastClick(document.body);
+			}, false);
+		</script>
+	</head>
+	<body>
+		<p>A tap and long hold, then release on input #1 will sometimes trigger focus on #2.</p>
+		<hr />
+		<form>
+			<p><input placeholder="1" name="i1" /></p>
+			<p><input placeholder="2" name="i2" /></p>
+			<p><input placeholder="3" name="i3" /></p>
+			<p><input placeholder="4" name="i4" /></p>
+			<p><input placeholder="5" name="i5" /></p>
+		</form>
+	</body>
+</html>

@@ -10,19 +10,19 @@
 <script type="application/javascript" src="../lib/fastclick.js"></script>
 <script type="application/javascript">
 	window.addEventListener('load', function() {
-		var i = 0;
+		var i = 0, fastClick;
 
-		new FastClick(document.body);
-		document.getElementById('alert-on-click').addEventListener('click', function() {
+		fastClick = new FastClick(document.body);
+		document.getElementById('alert-on-click').addEventListener('click', function(event) {
 			i++;
-			alert('Alert #' + i);
+			alert('Alert #' + i + ', on element with ID \'' + event.target.id + '\'.');
 		}, false);
 	}, false);
 </script>
 </head>
 <body>
-	<p>Tapping the first button will increment <code>i</code> and trigger an alert with the text <code>'Alert #' + i</code>.</p>
-	<p>Tapping on the first button should have absolutely no effect, but in iOS6 it will re-trigger the alert.</p>
+	<p>At the start of this test, <code>i = 0</code>. Tapping the first button will increment <code>i</code> and trigger an alert with the text <code>'Alert #' + i</code>.</p>
+	<p>Tapping on the second button should have absolutely no effect, but in iOS6 it will re-trigger the alert.</p>
 	<input type="button" id="alert-on-click" value="Button #1">
 	<br><br>
 	<input type="button" id="no-alert-on-click" value="Button #2">
