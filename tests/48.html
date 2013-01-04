@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="strap">
+	<head>
+		<title>#48</title>
+		<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="telephone=no" name="format-detection" />
+		<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/css/bootstrap.min.css" rel="stylesheet">
+		<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/css/bootstrap-responsive.min.css" rel="stylesheet">
+		<style type="text/css">
+			body { margin: 2em; }
+			p { font-family: sans-serif; }
+			input { height: 30px; }
+
+			.container { position: absolute; }
+		</style>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.2/bootstrap.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+		<script src="https://raw.github.com/mgcrea/angular-strap/master/dist/angular-strap.min.js"></script>
+		<script src="../lib/fastclick.js"></script>
+		<script>
+			var app = angular.module('strap', ['$strap.directives']);
+
+			app.controller('StrapCtrl', function($scope) {
+				$scope.dropdown = [
+					{text: 'Another action', href: '#anotherAction'},
+					{text: 'Something else here', href: '#', click: 'modal.saved=true'},
+					{divider: true},
+					{text: 'Separated link', href: '#', submenu: [
+							{text: 'Second level link', href: '#'},
+							{text: 'Second level link 2', href: '#'}
+						]
+					}
+				];
+			});
+
+			window.addEventListener('load', function() {
+				new FastClick(document);
+			}, false);
+		</script>
+	</head>
+	<body>
+		<p>The dropdown should stay open after tapping the button once.</p>
+		<hr>
+		<div class="container" ng-controller="StrapCtrl">
+
+			<!-- Button to trigger dropdown -->
+			<button type="button" class="btn" bs-dropdown="dropdown">Dropdown</button>
+		</div>
+	</body>
+</html>
