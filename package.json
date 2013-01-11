@@ -1,6 +1,6 @@
 {
   "name": "fastclick",
-  "version": "0.4.5",
+  "version": "0.4.7",
   "author": "FT Labs <enquiries@labs.ft.com> (http://labs.ft.com/)",
   "description": "Polyfill to remove click delays on browsers with touch UIs.",
   "contributors": [
