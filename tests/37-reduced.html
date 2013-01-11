@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+	p { font-family: sans-serif; }
+</style>
+<title>#37-reduced</title>
+<script>
+	window.addEventListener('load', function() {
+		document.getElementById('frame').contentDocument.body.innerHTML = '<input type="text" id="text" ontouchend="this.focus();" />';
+	}, false);
+</script>
+</head>
+<body>
+	<p>On tapping the text input in the iframe and enter text, the entered text will not appear until the text input is tapped again. After that, tapping the text input a third time while it is still focus it will seem to disable text entry completely.</p>
+	<iframe id="frame"></iframe>
+</body>
+</html>
