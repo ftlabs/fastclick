@@ -5,6 +5,8 @@
 <style type="text/css">
 	p, .test { font-family: sans-serif; }
 	.test { margin: 1em 4em; line-height: 4em; border: 1px solid black; font-size: 2em; text-align: center; }
+	.stats, .stats input { font-family: monospace; font-size: 0.9em; }
+	input { width: 10em; }
 
 	/* Disable certain interactions on touch devices */
 	body { -webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-select: none; -webkit-highlight: none; -webkit-tap-highlight-color: rgba(0,0,0,0); }
@@ -12,12 +14,27 @@
 <script type="application/javascript" src="../lib/fastclick.js"></script>
 <script type="application/javascript">
 	window.addEventListener('load', function() {
-		new FastClick(document.getElementById('fastclick'));
 		Array.prototype.forEach.call(document.getElementsByClassName('test'), function(testEl) {
+			var teTime;
+
+			testEl.addEventListener('touchend', function(event) {
+				teTime = Date.now();
+			}, false);
+		
+			testEl.addEventListener('click', function(event) {
+				var cTime = Date.now();
+		
+				document.getElementById('te-time').value = teTime;
+				document.getElementById('c-time').value = cTime;
+				document.getElementById('d-time').value = cTime - teTime;
+			}, false);
+
 			testEl.addEventListener('click', function() {
 				testEl.style.backgroundColor = testEl.style.backgroundColor ? '' : 'YellowGreen';
 			}, false)
 		});
+
+		new FastClick(document.getElementById('fastclick'));
 	}, false);
 </script>
 </head>
@@ -25,6 +42,7 @@
 	<p>Layer A responds to click events normally, which on iOS will introduce a 300ms delay.</p>
 	<p>Layer B is enhanced with FastClick, and will fire the click handler with no delay.</p>
 	<p>The layers will behave normally on platforms that don't support touch events.</p>
+	<p class="stats">Touch end time: <input id="te-time" value="0" />. Click event time: <input id="c-time" />. Difference: <input id="d-time" />.</p>
 	<div>
 		<div class="test">A</div>
 		<div class="test" id="fastclick">B</div>

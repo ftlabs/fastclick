@@ -17,7 +17,7 @@
 
 	Here, we apply FastClick to the content wrapper.
 	Now when you scroll the content really fast, and click the link before the scrolling stops.
-	Chances are what you have clicked (shown in the 3rd span in #navigation) is not what see under your finger, but rather the link which lay at that position sometime during your scroll.
+	Chances are what you have clicked is not what see under your finger, but rather the link which lay at that position sometime during your scroll.
 
 -->
 <style>
@@ -27,22 +27,17 @@
 	-webkit-box-orient: vertical;
 	height: 100%;
 }
-#navigation {
-	margin: 0;
-}
 #content {
 	-webkit-box-flex: 1;
 }
-.ios5 {
+#content {
 	overflow: scroll;
+	position: relative;
 	-webkit-overflow-scrolling: touch;
 }
-.ios5 > * {
+#content > * {
 	-webkit-transform: translate3d(0,0,0);
 }
-</style>
-
-<style id=styles-just-for-the-demo>
 a {
 	display: block;
 	background: #aaa;
@@ -61,25 +56,12 @@ a {
 #content {
 	width: 100%;
 }
-
-#navigation span {
-	background: crimson;
-	padding: 10px 15px;
-}
-#navigation span+span {
-	margin-left: 10px;
-	background: #3c94dc;
-}
 </style>
 
 <script src="../lib/fastclick.js"></script>
 <script>
-	function $(el) {
-		return document.getElementById(el);
-	}
-
 	window.addEventListener('load', function() {
-		new FastClick($('content'))
+		new FastClick(document.getElementById('content'))
 		
 		document.addEventListener('touchstart', function(event) {
 			console.log('start @ ' + event.pageY);
@@ -89,7 +71,11 @@ a {
 			console.log('move @ ' + event.pageY);
 		}, false);
 
-		document.addEventListener('click', function() {
+		document.addEventListener('touchend', function(event) {
+			console.log('end @ ' + event.pageY);
+		}, false);
+
+		document.addEventListener('click', function(event) {
 			if (event.target.tagName.toLowerCase() === 'a') {
 				console.log('clicked ' + event.target.textContent);
 			}
