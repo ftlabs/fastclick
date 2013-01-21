@@ -67,14 +67,13 @@ Sometimes you need FastClick to ignore certain elements. You can do this easily 
 <a class="needsclick">Ignored by FastClick</a>
 ```
 
-#### Use Case 1 - Non-synthetic click required
+#### Use case 1: non-synthetic click required
 Internally, FastClick uses `document.createEvent` to fire a synthetic `click` event as soon as `touchend` is fired by the browser. It then suppresses the additional `click` event created by the browser after that. In some cases, the non-synthetic `click` event created by the browser is required, as described in the [triggering focus example](http://ftlabs.github.com/fastclick/examples/focus.html).
 
 This is where the `needsclick` class comes in. Add the class to any element that requires a non-synthetic click.
 
-#### Use Case 2 - Twitter Bootstrap 2.2.2 dropdowns
-
-Another example of when to use the 'needsclick' class is with dropdowns in Twitter Bootstrap 2.2.2. Bootstrap uses its own touchstart event for dropdowns, so you want to tell FastClick to ignore those. If you don't, touch devices will automatically close the dropdown as soon as it is clicked, because both FastClick and Bootstrap execute the synthetic click, one opens the dropdown, the second closes it immediately after.
+#### Use case 2: Twitter Bootstrap 2.2.2 dropdowns
+Another example of when to use the `needsclick` class is with dropdowns in Twitter Bootstrap 2.2.2. Bootstrap add its own `touchstart` listener for dropdowns, so you want to tell FastClick to ignore those. If you don't, touch devices will automatically close the dropdown as soon as it is clicked, because both FastClick and Bootstrap execute the synthetic click, one opens the dropdown, the second closes it immediately after.
 
 ```html
 <a class="dropdown-toggle needsclick" data-toggle="dropdown">Dropdown</a>
