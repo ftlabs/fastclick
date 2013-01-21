@@ -61,8 +61,8 @@ Installation via the [Node Package Manager](https://npmjs.org/package/fastclick)
 
 ## Advanced
 
-### Ignore certain elements with 'needsclick' class
-Sometimes you need FastClick to ignore certain elements. You can do this easily by adding the 'needsclick' class.
+### Ignore certain elements with `needsclick` class
+Sometimes you need FastClick to ignore certain elements. You can do this easily by adding the `needsclick` class.
 ```html
 <a class="needsclick">Ignored by FastClick</a>
 ```
