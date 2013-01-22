@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+	p, label { font-family: sans-serif; }
+	label > a { display: inline-block; background: silver; padding: 0 1em; line-height: 2em; pointer-events: none; }
+	.test { margin: 2em 0; }
+</style>
+<title>#60</title>
+<script type="application/javascript" src="../lib/fastclick.js"></script>
+<script type="application/javascript">
+	window.addEventListener('load', function() {
+		new FastClick(document.body);
+	}, false);
+</script>
+</head>
+<body>
+	<p>FastClick is instantiated on the document body. A <code>label</code> element is wrapped around an anchor element. Tapping the anchor element should cause the label's the associated input control to gain focus.</p>
+	<p>This works because the CSS rule <code>label > a { pointer-events: none; }</code> is being used.</p>
+	<div class="test">
+		<input type="text" id="test-input"> <label for="test-input"><a href="#">Tap here</a></label>
+	</div>
+</body>
+</html>
