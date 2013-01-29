@@ -59,6 +59,10 @@ FastClick comes with support for installation via the [Component package manager
 
 Installation via the [Node Package Manager](https://npmjs.org/package/fastclick) is supported, although Component is preferred as this is not strictly a Node packagage.
 
+### Minification
+
+Run `bin/minify` to build a minified version of FastClick using the Closure Compiler REST API. The minified file is saved to `build/fastclick.min.js`.
+
 ## Advanced
 
 ### Ignore certain elements with `needsclick` class
