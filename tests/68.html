@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+	p { font-family: sans-serif; }
+	input { display: inline; }
+</style>
+<title>#68</title>
+<script type="application/javascript" src="../lib/fastclick.js"></script>
+<script type="application/javascript">
+	window.addEventListener('load', function() {
+		new FastClick(document.body);
+	}, false);
+</script>
+</head>
+<body>
+	<p>On iOS, tapping either of the inputs should open the media selection dialog normally.</p>
+	<hr>
+	<input type="file" multiple="true">
+	<input type="file">
+</body>
+</html>
