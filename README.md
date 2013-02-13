@@ -1,5 +1,3 @@
-## FT Labs, Google and Facebook will be hosting a discussion about making web apps agnostic to different input technologies at [Edge](http://edgeconf.com/), London, 9 February 2013.
-
 # FastClick
 
 FastClick is a simple, easy-to-use library for eliminating the 300ms delay between a physical tap and the firing of a `click` event on mobile browsers. The aim is to make your application feel less laggy and more responsive while avoiding any interference with your current logic.
