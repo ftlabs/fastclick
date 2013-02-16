@@ -55,7 +55,7 @@ FastClick comes with support for installation via the [Component package manager
 
 ### NPM
 
-Installation via the [Node Package Manager](https://npmjs.org/package/fastclick) is supported, although Component is preferred as this is not strictly a Node packagage.
+Installation via the [Node Package Manager](https://npmjs.org/package/fastclick) is supported, although Component is preferred as this is not strictly a Node package.
 
 ### Minification
 
