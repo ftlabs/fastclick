@@ -4,6 +4,10 @@ FastClick is a simple, easy-to-use library for eliminating the 300ms delay betwe
 
 FastClick is developed by [FT Labs](http://labs.ft.com/), part of the Financial Times.
 
+[Explication en français](http://maxime.sh/2013/02/supprimer-le-lag-des-clics-sur-mobile-avec-fastclick/).
+[日本語で説明](https://developer.mozilla.org/ja/docs/Mozilla/Firefox_OS/Apps/Tips_and_techniques#Make_events_immediate)。
+[Краткое пояснение на русском языке](http://job-blog.bullgare.ru/2013/02/библиотека-для-более-отзывчивой-рабо/).
+
 ## Compatibility ##
 
 The library has been deployed as part of the [FT Web App](http://app.ft.com/) and is tried and tested on the following mobile browsers:
