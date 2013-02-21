@@ -1,25 +1,38 @@
 {
-  "name": "fastclick",
-  "version": "0.5.8",
-  "author": "FT Labs <enquiries@labs.ft.com> (http://labs.ft.com/)",
-  "description": "Polyfill to remove click delays on browsers with touch UIs.",
-  "contributors": [
-    "Matthew Caruana Galizia",
-    "Rowan Beentje"
-  ],
-  "main": "lib/fastclick.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/ftlabs/fastclick.git"
-  },
-  "keywords": [
-    "fastclick",
-    "mobile",
-    "touch",
-    "tap",
-    "click",
-    "delay"
-  ],
-  "license": "MIT",
-  "homepage": "https://github.com/ftlabs/fastclick"
+	"name": "fastclick",
+	"version": "0.5.8",
+	"description": "Polyfill to remove click delays on browsers with touch UIs.",
+	"contributors": [
+		{
+			"name": "Rowan Beentje",
+			"email": "rowan.beentje@ft.com"
+		},
+		{
+			"name": "Matthew Caruana Galizia",
+			"email": "m@m.cg"
+		}
+	],
+	"main": "lib/fastclick.js",
+	"repositories": [
+		{
+			"type": "git",
+			"url": "git://github.com/ftlabs/fastclick.git"
+		}
+	],
+	"keywords": [
+		"fastclick",
+		"mobile",
+		"touch",
+		"tap",
+		"click",
+		"delay"
+	],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://opensource.org/licenses/MIT"
+		}
+	],
+	"implements": ["CommonJS/Modules/1.0"],
+	"homepage": "https://github.com/ftlabs/fastclick"
 }
