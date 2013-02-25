@@ -16,7 +16,7 @@
 	window.addEventListener('load', function() {
 
 		// Android 2.2 needs FastClick to be instantiated before the other listeners so that the stopImmediatePropagation hack can work.
-		new FastClick(document.getElementById('fastclick'));
+		FastClick.attach(document.getElementById('fastclick'));
 
 		Array.prototype.forEach.call(document.getElementsByClassName('test'), function(testEl) {
 			var teTime;
