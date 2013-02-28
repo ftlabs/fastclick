@@ -3,5 +3,8 @@
   "description": "Polyfill to remove click delays on browsers with touch UIs.",
   "version": "0.6.0",
   "main": "lib/fastclick.js",
+  "scripts": [
+    "lib/fastclick.js"
+  ],
   "license": "MIT"
 }
