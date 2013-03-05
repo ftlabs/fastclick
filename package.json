@@ -2,6 +2,13 @@
 	"name": "fastclick",
 	"version": "0.6.0",
 	"description": "Polyfill to remove click delays on browsers with touch UIs.",
+	"maintainers": [
+		{
+			"name": "Matthew Caruana Galizia",
+			"email": "m@m.cg",
+			"url": "http://m.cg/"
+		}
+	],
 	"contributors": [
 		{
 			"name": "Rowan Beentje",
