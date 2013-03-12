@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <style type="text/css">
 	p, .test { font-family: sans-serif; }
-	.test { margin: 1em 4em; line-height: 4em; border: 1px solid black; font-size: 2em; text-align: center; }
+	.test { margin: 1em auto; width: 6em; line-height: 4em; border: 1px solid black; font-size: 2em; text-align: center; }
 	.stats, .stats input { font-family: monospace; font-size: 0.9em; }
 	input { width: 10em; }
 
@@ -14,6 +14,10 @@
 <script type="application/javascript" src="../lib/fastclick.js"></script>
 <script type="application/javascript">
 	window.addEventListener('load', function() {
+
+		// Android 2.2 needs FastClick to be instantiated before the other listeners so that the stopImmediatePropagation hack can work.
+		FastClick.attach(document.getElementById('fastclick'));
+
 		Array.prototype.forEach.call(document.getElementsByClassName('test'), function(testEl) {
 			var teTime;
 
@@ -33,8 +37,6 @@
 				testEl.style.backgroundColor = testEl.style.backgroundColor ? '' : 'YellowGreen';
 			}, false)
 		});
-
-		new FastClick(document.getElementById('fastclick'));
 	}, false);
 </script>
 </head>
@@ -42,7 +44,9 @@
 	<p>Layer A responds to click events normally, which on iOS will introduce a 300ms delay.</p>
 	<p>Layer B is enhanced with FastClick, and will fire the click handler with no delay.</p>
 	<p>The layers will behave normally on platforms that don't support touch events.</p>
-	<p class="stats">Touch end time: <input id="te-time" value="0" />. Click event time: <input id="c-time" />. Difference: <input id="d-time" />.</p>
+	<p class="stats">Touch end time: <input id="te-time" value="0" />.</p>
+	<p class="stats">Click event time: <input id="c-time" />.</p>
+	<p class="stats">Difference: <input id="d-time" />.</p>
 	<div>
 		<div class="test">A</div>
 		<div class="test" id="fastclick">B</div>

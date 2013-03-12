@@ -15,7 +15,7 @@
 	window.addEventListener('load', function() {
 		var textInput = document.querySelector('input');
 
-		new FastClick(document.body);
+		FastClick.attach(document.body);
 		Array.prototype.forEach.call(document.getElementsByClassName('test'), function(testEl) {
 			testEl.addEventListener('click', function() {
 				textInput.focus();
