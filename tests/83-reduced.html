@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<title>Fastclick test</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+	<script>
+		document.addEventListener('touchend', function() {}, false);
+	</script>
+	<style>
+		html {
+			font-size: 32px;
+			font-family: Helvetica, sans-serif;
+		}
+		body {
+			padding: 1em;
+		}
+		div {
+			margin-top: 50%;
+			height: 900px;
+		}
+		.button {
+			width: 100%;
+			color: #fff;
+			text-align: center;
+			text-decoration: none;
+			font-weight: 600;
+			background: #ff3b46;
+			padding: 1em;
+		}
+		.button:hover,
+		.button:active {
+			color: #fff;
+			background: #5091d2;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<a class="button" href="http://www.apple.com/">Test button</a>
+	</div>
+</body>
+</html>
