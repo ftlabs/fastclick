@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+	p, label { font-family: sans-serif; }
+</style>
+<title>#84</title>
+<script type="application/javascript" src="../lib/fastclick.js"></script>
+<script type="application/javascript">
+	window.addEventListener('load', function() {
+		new FastClick(document.body);
+	}, false);
+</script>
+</head>
+<body>
+	<p>Tapping the following read-only input field should show the alert message.</p>
+	<input type="text" id="readOnlyText" onclick="alert('read-only input tapped')" readonly>
+</body>
+</html>
