@@ -14,29 +14,37 @@
 <script type="application/javascript" src="../lib/fastclick.js"></script>
 <script type="application/javascript">
 	window.addEventListener('load', function() {
+		var testA, testB, teTime, cTime;
+
+		testA = document.getElementById('test-a');
+		testB = document.getElementById('test-b');
 
 		// Android 2.2 needs FastClick to be instantiated before the other listeners so that the stopImmediatePropagation hack can work.
-		FastClick.attach(document.getElementById('fastclick'));
+		FastClick.attach(testB);
 
-		Array.prototype.forEach.call(document.getElementsByClassName('test'), function(testEl) {
-			var teTime;
+		testA.addEventListener('touchend', function(event) {
+			teTime = Date.now();
+			document.getElementById('te-time').value = teTime;
+		}, false);
 
-			testEl.addEventListener('touchend', function(event) {
-				teTime = Date.now();
-			}, false);
-		
-			testEl.addEventListener('click', function(event) {
-				var cTime = Date.now();
-		
-				document.getElementById('te-time').value = teTime;
-				document.getElementById('c-time').value = cTime;
-				document.getElementById('d-time').value = cTime - teTime;
-			}, false);
+		testA.addEventListener('click', function(event) {
+			cTime = Date.now();
+			document.getElementById('c-time').value = cTime;
+			document.getElementById('d-time').value = cTime - teTime;
+			testA.style.backgroundColor = testA.style.backgroundColor ? '' : 'YellowGreen';
+		}, false);
 
-			testEl.addEventListener('click', function() {
-				testEl.style.backgroundColor = testEl.style.backgroundColor ? '' : 'YellowGreen';
-			}, false)
-		});
+		testB.addEventListener('touchend', function(event) {
+			teTime = Date.now();
+			document.getElementById('te-time').value = teTime;
+			document.getElementById('d-time').value = cTime - teTime;
+		}, false);
+
+		testB.addEventListener('click', function(event) {
+			cTime = Date.now();
+			document.getElementById('c-time').value = cTime;
+			testB.style.backgroundColor = testB.style.backgroundColor ? '' : 'YellowGreen';
+		}, false);
 	}, false);
 </script>
 </head>
@@ -48,8 +56,8 @@
 	<p class="stats">Click event time: <input id="c-time" /></p>
 	<p class="stats">Difference: <input id="d-time" /></p>
 	<div>
-		<div class="test">A</div>
-		<div class="test" id="fastclick">B</div>
+		<div class="test" id="test-a">A</div>
+		<div class="test" id="test-b">B</div>
 	</div>
 </body>
 </html>
