@@ -1,7 +1,7 @@
 {
   "name": "fastclick",
   "description": "Polyfill to remove click delays on browsers with touch UIs.",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "main": "lib/fastclick.js",
   "scripts": [
     "lib/fastclick.js"
