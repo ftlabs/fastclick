@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- Copied from: http://fastclick-issue83.aws.af.cm/ -->
+    <title>Fastclick test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type='application/javascript' src='../lib/fastclick.js'></script>
+    <script>
+      window.addEventListener('load', function() {
+        new FastClick(document.body);
+      }, false);
+    </script>
+    <style>
+      * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 32px;
+        font-family: Helvetica, sans-serif;
+      }
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        padding: 1em;
+      }
+      div {
+        margin-top: 50%;
+        height: 900px;
+      }
+      .button {
+        width: 100%;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 600;
+        background: #ff3b46;
+        padding: 1em;
+        display: inline-block;
+        position: relative;
+        border: 0;
+        cursor: pointer;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+        -webkit-box-shadow: 0 0.18em 0 #931517;
+        -moz-box-shadow: 0 0.18em 0 #931517;
+        box-shadow: 0 0.18em 0 #931517;
+      }
+      .button:hover,
+      .button:active {
+        color: #fff;
+        text-decoration: none;
+        background: #5091d2;
+        -webkit-box-shadow: 0 0.18em 0 #36628d;
+        -moz-box-shadow: 0 0.18em 0 #36628d;
+        box-shadow: 0 0.18em 0 #36628d;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <a class="button" href="https://github.com/ftlabs/fastclick">Test button</a>
+    </div>
+  </body>
+</html>
