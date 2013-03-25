@@ -6,5 +6,9 @@
   "scripts": [
     "lib/fastclick.js"
   ],
+  "ignore": [
+    "examples/",
+    "tests/"
+  ],
   "license": "MIT"
 }
