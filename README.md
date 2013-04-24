@@ -71,7 +71,7 @@ Installation via the [Node Package Manager](https://npmjs.org/package/fastclick)
 
 ### Minification ###
 
-Run `bin/minify` to build a minified version of FastClick using the Closure Compiler REST API. The minified file is saved to `build/fastclick.min.js`.
+Run `make` to build a minified version of FastClick using the Closure Compiler REST API. The minified file is saved to `build/fastclick.min.js`.
 
 ## Advanced ##
 
