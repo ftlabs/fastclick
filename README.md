@@ -49,7 +49,7 @@ To instantiate FastClick on the `body`, which is the recommended method of use:
 
 ```js
 window.addEventListener('load', function() {
-	new FastClick(document.body);
+	FastClick.attach(document.body);
 }, false);
 ```
 
