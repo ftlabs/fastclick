@@ -27,13 +27,7 @@ The library has been deployed as part of the [FT Web App](http://app.ft.com/) an
 * Android Browser since Android 2
 * PlayBook OS 1 and upwards
 
-FastClick doesn't attach any listeners on desktop browsers as it is not needed. Those that have been tested are:
-
-* Safari
-* Chrome
-* Internet Explorer
-* Firefox
-* Opera
+FastClick doesn't attach any listeners on desktop browsers or Chrome on Android with `user-scalable="no"` in the [viewport meta tag](https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag) as it is not needed.
 
 ## Usage ##
 
