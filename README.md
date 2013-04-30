@@ -69,7 +69,7 @@ Installation via [npm](https://npmjs.org/package/fastclick) is also supported.
 npm install fastclick
 ```
 
-And bower.
+And [Bower](http://bower.io/).
 
 ```bash
 bower install fastclick
