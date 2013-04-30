@@ -29,6 +29,8 @@ The library has been deployed as part of the [FT Web App](http://app.ft.com/) an
 
 FastClick doesn't attach any listeners on desktop browsers or Chrome on Android with `user-scalable="no"` in the [viewport meta tag](https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag) as it is not needed.
 
+Support for IE on Windows Phone 8 is [being tested](https://github.com/ftlabs/fastclick/issues/97).
+
 ## Usage ##
 
 Include fastclick.js in your JavaScript bundle or add it to your HTML page like this:
