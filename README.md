@@ -77,7 +77,7 @@ bower install fastclick
 
 ## Advanced ##
 
-### Ignore certain elements with `needsclick` class ###
+### Ignore certain elements with `needsclick` ###
 
 Sometimes you need FastClick to ignore certain elements. You can do this easily by adding the `needsclick` class.
 ```html
