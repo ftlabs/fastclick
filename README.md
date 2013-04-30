@@ -49,40 +49,49 @@ window.addEventListener('load', function() {
 }, false);
 ```
 
-### Google Closure Compiler ###
+### Minified ###
 
-FastClick supports compilation with `ADVANCED_OPTIMIZATIONS` ('advanced mode'), which should reduce its size by about 70% (60% gzipped). Note that exposure of the `FastClick` variable isn't forced therefore you must compile it along with all of your code.
+Run `make` to build a minified version of FastClick using the Closure Compiler REST API. The minified file is saved to `build/fastclick.min.js`.
 
-### AMD ###
+### Package managers ###
 
 FastClick has AMD (Asynchronous Module Definition) support. This allows it to be lazy-loaded with an AMD loader, such as [RequireJS](http://requirejs.org/).
 
-### Component ###
+You can also install FastClick using [Component](https://github.com/component/component).
 
-FastClick comes with support for installation via the [Component package manager](https://github.com/component/component).
+```bash
+component install fastclick
+```
 
-### NPM ###
+Installation via [npm](https://npmjs.org/package/fastclick) is also supported.
 
-Installation via the [Node Package Manager](https://npmjs.org/package/fastclick) is supported, although Component is preferred as this is not strictly a Node package.
+```bash
+npm install fastclick
+```
 
-### Minification ###
+And bower.
 
-Run `make` to build a minified version of FastClick using the Closure Compiler REST API. The minified file is saved to `build/fastclick.min.js`.
+```bash
+bower install fastclick
+```
 
 ## Advanced ##
 
 ### Ignore certain elements with `needsclick` class ###
+
 Sometimes you need FastClick to ignore certain elements. You can do this easily by adding the `needsclick` class.
 ```html
 <a class="needsclick">Ignored by FastClick</a>
 ```
 
 #### Use case 1: non-synthetic click required ####
+
 Internally, FastClick uses `document.createEvent` to fire a synthetic `click` event as soon as `touchend` is fired by the browser. It then suppresses the additional `click` event created by the browser after that. In some cases, the non-synthetic `click` event created by the browser is required, as described in the [triggering focus example](http://ftlabs.github.com/fastclick/examples/focus.html).
 
 This is where the `needsclick` class comes in. Add the class to any element that requires a non-synthetic click.
 
 #### Use case 2: Twitter Bootstrap 2.2.2 dropdowns ####
+
 Another example of when to use the `needsclick` class is with dropdowns in Twitter Bootstrap 2.2.2. Bootstrap add its own `touchstart` listener for dropdowns, so you want to tell FastClick to ignore those. If you don't, touch devices will automatically close the dropdown as soon as it is clicked, because both FastClick and Bootstrap execute the synthetic click, one opens the dropdown, the second closes it immediately after.
 
 ```html
