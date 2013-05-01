@@ -57,23 +57,7 @@ Run `make` to build a minified version of FastClick using the Closure Compiler R
 
 FastClick has AMD (Asynchronous Module Definition) support. This allows it to be lazy-loaded with an AMD loader, such as [RequireJS](http://requirejs.org/).
 
-You can also install FastClick using [Component](https://github.com/component/component).
-
-```bash
-component install fastclick
-```
-
-Installation via [npm](https://npmjs.org/package/fastclick) is also supported.
-
-```bash
-npm install fastclick
-```
-
-And [Bower](http://bower.io/).
-
-```bash
-bower install fastclick
-```
+You can also install FastClick using [Component](https://github.com/component/component), [npm](https://npmjs.org/package/fastclick) or [Bower](http://bower.io/).
 
 ## Advanced ##
 
