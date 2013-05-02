@@ -53,11 +53,15 @@ window.addEventListener('load', function() {
 
 Run `make` to build a minified version of FastClick using the Closure Compiler REST API. The minified file is saved to `build/fastclick.min.js`.
 
-### Package managers ###
+### AMD ###
 
 FastClick has AMD (Asynchronous Module Definition) support. This allows it to be lazy-loaded with an AMD loader, such as [RequireJS](http://requirejs.org/).
 
-You can also install FastClick using [Component](https://github.com/component/component), [npm](https://npmjs.org/package/fastclick) or [Bower](http://bower.io/).
+### Package managers ###
+
+You can install FastClick using [Component](https://github.com/component/component), [npm](https://npmjs.org/package/fastclick) or [Bower](http://bower.io/).
+
+For Ruby, there's a third-party gem called [fastclick-rails](http://rubygems.org/gems/fastclick-rails). For .NET there's a [NuGet package](http://nuget.org/packages/FastClick).
 
 ## Advanced ##
 
