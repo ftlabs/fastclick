@@ -6,7 +6,7 @@ CODE=js_code@lib/fastclick.js
 
 CHECK=\033[32m✔\033[39m
 
-build: lib/fastclick.js
+build/fastclick.min.js: lib/fastclick.js
 	@mkdir -p build
 	@echo -n "Building build/fastclick.min.js...                  "
 	@curl --silent --show-error --data-urlencode "${CODE}" --data "${QS}&output_info=compiled_code" ${URL} -o build/fastclick.min.js
