@@ -49,6 +49,16 @@ window.addEventListener('load', function() {
 }, false);
 ```
 
+Don't forget to add a [shim](https://developer.mozilla.org/en-US/docs/DOM/EventTarget.removeEventListener#Compatibility) for `addEventListener` if you want to support IE8 and below.
+
+Otherwise, if you're using jQuery:
+
+```js
+$(function() {
+	FastClick.attach(document.body);
+});
+```
+
 ### Minified ###
 
 Run `make` to build a minified version of FastClick using the Closure Compiler REST API. The minified file is saved to `build/fastclick.min.js`.
