@@ -27,9 +27,23 @@ The library has been deployed as part of the [FT Web App](http://app.ft.com/) an
 * Android Browser since Android 2
 * PlayBook OS 1 and upwards
 
-FastClick doesn't attach any listeners on desktop browsers or Chrome on Android with `user-scalable="no"` in the [viewport meta tag](https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag) as it is not needed.
+## When it isn't needed ##
 
-Support for IE on Windows Phone 8 is [being tested](https://github.com/ftlabs/fastclick/issues/97).
+FastClick doesn't attach any listeners on desktop browsers or Chrome on Android with `user-scalable=no` in the [viewport meta tag](https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag) as it is not needed. You should add this tag if you want to disable double-tap-to-zoom entirely.
+
+```html
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+```
+
+For IE10, you can use `-ms-touch-action: none` to disable double-tap-to-zoom on certain elements (like links and buttons) as described in [this MSDN blog post](http://blogs.msdn.com/b/askie/archive/2013/01/06/how-to-implement-the-ms-touch-action-none-property-to-disable-double-tap-zoom-on-touch-devices.aspx). For example:
+
+```css
+a, input, button {
+	-ms-touch-action: none !important;
+}
+```
+
+You'll then have no tap delay on those elements, without needing FastClick.
 
 ## Usage ##
 
