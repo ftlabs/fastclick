@@ -1,6 +1,6 @@
 {
 	"name": "fastclick",
-	"version": "0.6.6-dev",
+	"version": "0.6.7",
 	"description": "Polyfill to remove click delays on browsers with touch UIs.",
 	"maintainers": [
 		{
