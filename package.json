@@ -24,12 +24,10 @@
 		}
 	],
 	"main": "lib/fastclick.js",
-	"repositories": [
-		{
-			"type": "git",
-			"url": "git://github.com/ftlabs/fastclick.git"
-		}
-	],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/ftlabs/fastclick.git"
+	},
 	"keywords": [
 		"fastclick",
 		"mobile",
