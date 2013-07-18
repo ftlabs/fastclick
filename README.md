@@ -73,9 +73,7 @@ $(function() {
 });
 ```
 
-If you're using Browserify or another Commonjs-style module system, the `FastClick.attach` function will
-be returned when you call `require('fastclick')`. As a result, the easiest way to use FastClick
-with these loaders is as follows:
+If you're using Browserify or another CommonJS-style module system, the `FastClick.attach` function will be returned when you call `require('fastclick')`. As a result, the easiest way to use FastClick with these loaders is as follows:
 
 ```js
 var attachFastClick = require('fastclick');
