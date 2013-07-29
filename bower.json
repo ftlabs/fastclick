@@ -4,7 +4,8 @@
   "main": "lib/fastclick.js",
   "ignore": [
     "**/.*",
-    "*.json",
+    "component.json",
+    "package.json",
     "Makefile",
     "tests",
     "examples"
