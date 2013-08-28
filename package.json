@@ -1,47 +1,49 @@
 {
-	"name": "fastclick",
-	"version": "0.6.9",
-	"description": "Polyfill to remove click delays on browsers with touch UIs.",
-	"maintainers": [
-		{
-			"name": "Matthew Caruana Galizia",
-			"email": "m@m.cg",
-			"url": "http://m.cg/"
-		}
-	],
-	"author": {
-		"name": "Rowan Beentje",
-		"email": "rowan.beentje@ft.com"
-	},
-	"contributors": [
-		{
-			"name": "Rowan Beentje",
-			"email": "rowan.beentje@ft.com"
-		},
-		{
-			"name": "Matthew Caruana Galizia",
-			"email": "m@m.cg"
-		}
-	],
-	"main": "lib/fastclick.js",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/ftlabs/fastclick.git"
-	},
-	"keywords": [
-		"fastclick",
-		"mobile",
-		"touch",
-		"tap",
-		"click",
-		"delay"
-	],
-	"licenses": [
-		{
-			"type": "MIT",
-			"url": "http://opensource.org/licenses/MIT"
-		}
-	],
-	"implements": ["CommonJS/Modules/1.0"],
-	"homepage": "https://github.com/ftlabs/fastclick"
+  "name": "fastclick",
+  "version": "0.6.10",
+  "description": "Polyfill to remove click delays on browsers with touch UIs.",
+  "maintainers": [
+    {
+      "name": "Matthew Caruana Galizia",
+      "email": "m@m.cg",
+      "url": "http://m.cg/"
+    }
+  ],
+  "author": {
+    "name": "Rowan Beentje",
+    "email": "rowan.beentje@ft.com"
+  },
+  "contributors": [
+    {
+      "name": "Rowan Beentje",
+      "email": "rowan.beentje@ft.com"
+    },
+    {
+      "name": "Matthew Caruana Galizia",
+      "email": "m@m.cg"
+    }
+  ],
+  "main": "lib/fastclick.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ftlabs/fastclick.git"
+  },
+  "keywords": [
+    "fastclick",
+    "mobile",
+    "touch",
+    "tap",
+    "click",
+    "delay"
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "implements": [
+    "CommonJS/Modules/1.0"
+  ],
+  "homepage": "https://github.com/ftlabs/fastclick"
 }
