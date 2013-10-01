@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+	p { font-family: sans-serif; }
+</style>
+<title>#160</title>
+<script type="application/javascript">
+	function test(event) {
+		var selectionStart, selectionDirection, selectionEnd, target = event.target, out = '';
+
+		try {
+			selectionStart = target.selectionStart;
+			out += 'Success getting selectionStart: ' + selectionStart + '\n';
+		} catch (err) {
+			out += 'Error getting selectionStart: ' + err + '\n';
+		}
+
+		try {
+			selectionEnd = target.selectionEnd;
+			out += 'Success getting selectionEnd: ' + selectionEnd + '\n';
+		} catch (err) {
+			out += 'Error getting selectionEnd: ' + err + '\n';
+		}
+
+		try {
+			selectionDirection = target.selectionDirection;
+			out += 'Success getting selectionDirection: ' + selectionDirection + '\n';
+		} catch (err) {
+			out += 'Error getting selectionDirection: ' + err + '\n';
+		}
+
+		try {
+			target.setSelectionRange(0, 0);
+			out += 'Success setting setSelectionRange.\n';
+		} catch (err) {
+			out += 'Error setting selection range: ' + err + '\n';
+		}
+
+		alert(out);
+	}
+
+	window.addEventListener('load', function() {
+		Array.prototype.forEach.call(document.getElementsByClassName('test'), function(elem) {
+			elem.addEventListener('click', test, false);
+		});
+	}, false);
+</script>
+</head>
+<body>
+	<p>Calling elem.setSelectionRange on inputs with type date or time, as well as getting the selectionStart or selectionEnd properties, throws a TypeError.</p>
+	<form>
+		<p>Test (date):</p>
+		<input type="date" class="test">
+		<p>Test (datetime):</p>
+		<input type="datetime" class="test">
+		<p>Test (time):</p>
+		<input type="time" class="test">
+		<p>Control (text):</p>
+		<input class="test">
+	</form>
+</body>
+</html>
