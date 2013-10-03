@@ -15,7 +15,10 @@ build/fastclick.min.js: lib/fastclick.js
 	@echo -e "${CHECK} Done\n\n" "`curl --silent --show-error --data-urlencode "${CODE}" --data "${QS}&output_info=statistics" ${URL}`"
 	@echo ${STATS}
 
+test:
+	jshint -v lib/*.js
+
 clean:
 	rm -rf build
 
-.PHONY: clean
+.PHONY: clean test
