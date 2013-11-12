@@ -1,10 +1,15 @@
 {
-  "name": "fastclick",
-  "description": "Polyfill to remove click delays on browsers with touch UIs.",
-  "version": "0.6.1",
-  "main": "lib/fastclick.js",
-  "scripts": [
-    "lib/fastclick.js"
-  ],
-  "license": "MIT"
+	"name": "fastclick",
+	"repo": "ftlabs/fastclick",
+	"description": "Polyfill to remove click delays on browsers with touch UIs.",
+	"version": "0.6.11",
+	"main": "lib/fastclick.js",
+	"scripts": [
+		"lib/fastclick.js"
+	],
+	"ignore": [
+		"examples/",
+		"tests/"
+	],
+	"license": "MIT"
 }

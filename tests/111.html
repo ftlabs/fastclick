@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
+<style type="text/css">
+	p { font-family: sans-serif; }
+	.test { font-size: 2em; border-radius: 0.4em; padding: 1em 1.5em; line-height: 2em; width: 1em; color: white; display: inline-block; }
+	#test1 { background: rgb(253, 109, 109); margin-right: 0.2em; }
+	#test2 { background: rgb(173, 255, 47); margin-left: 0.2em; }
+	#testcontainer { text-align: center; }
+</style>
+<title>#111</title>
+<script type="application/javascript" src="../lib/fastclick.js"></script>
+<script type="application/javascript">
+	window.addEventListener('load', function() {
+		var test1 = document.getElementById('test1');
+
+		FastClick.attach(test1);
+		test1.addEventListener('click', function(event) {
+			if (event.forwardedTouchEvent) {
+				setTimeout(function() {
+					test1.style.webkitTransform = test1.style.webkitTransform ? '' : 'rotate(20deg)';
+				}, 0);
+			}
+		}, false);
+	}, false);
+</script>
+</head>
+<body>
+	<p>If you attempt a pinch zoom on iOS with both fingers on the same element, pinch zooming should work. If each finger is touching a different element, the pinch zooming should also work.</p>
+	<p>Only the red block below has FastClick enabled.</p>
+	<div id="testcontainer">
+		<div class="test" id="test1">&#9678;</div>
+		<div class="test" id="test2">&#9678;</div>
+	</div>
+</body>
+</html>

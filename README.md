@@ -10,6 +10,12 @@ FastClick is developed by [FT Labs](http://labs.ft.com/), part of the Financial 
 
 [Краткое пояснение на русском языке](http://job-blog.bullgare.ru/2013/02/библиотека-для-более-отзывчивой-рабо/).
 
+## Why does the delay exist? ##
+
+According to [Google](https://developers.google.com/mobile/articles/fast_buttons):
+
+> ...mobile browsers will wait approximately 300ms from the time that you tap the button to fire the click event. The reason for this is that the browser is waiting to see if you are actually performing a double tap.
+
 ## Compatibility ##
 
 The library has been deployed as part of the [FT Web App](http://app.ft.com/) and is tried and tested on the following mobile browsers:
@@ -21,13 +27,27 @@ The library has been deployed as part of the [FT Web App](http://app.ft.com/) an
 * Android Browser since Android 2
 * PlayBook OS 1 and upwards
 
-FastClick doesn't attach any listeners on desktop browsers as it is not needed. Those that have been tested are:
+## When it isn't needed ##
 
-* Safari
-* Chrome
-* Internet Explorer
-* Firefox
-* Opera
+FastClick doesn't attach any listeners on desktop browsers.
+
+Chrome 32+ on Android with `width=device-width` in the [viewport meta tag](https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag) doesn't have a 300ms delay, therefore listeners aren't attached.
+
+Same goes for Chrome on Android (all versions) with `user-scalable=no` in the viewport meta tag. But be aware that `user-scalable=no` also disables pinch zooming, which may be an accessibility concern.
+
+```html
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+```
+
+For IE10, you can use `-ms-touch-action: none` to disable double-tap-to-zoom on certain elements (like links and buttons) as described in [this MSDN blog post](http://blogs.msdn.com/b/askie/archive/2013/01/06/how-to-implement-the-ms-touch-action-none-property-to-disable-double-tap-zoom-on-touch-devices.aspx). For example:
+
+```css
+a, input, button {
+	-ms-touch-action: none !important;
+}
+```
+
+You'll then have no tap delay on those elements, without needing FastClick.
 
 ## Usage ##
 
@@ -43,44 +63,58 @@ To instantiate FastClick on the `body`, which is the recommended method of use:
 
 ```js
 window.addEventListener('load', function() {
-	new FastClick(document.body);
+	FastClick.attach(document.body);
 }, false);
 ```
 
-### Google Closure Compiler ###
+Don't forget to add a [shim](https://developer.mozilla.org/en-US/docs/DOM/EventTarget.removeEventListener#Compatibility) for `addEventListener` if you want to support IE8 and below.
 
-FastClick supports compilation with `ADVANCED_OPTIMIZATIONS` ('advanced mode'), which should reduce its size by about 70% (60% gzipped). Note that exposure of the `FastClick` variable isn't forced therefore you must compile it along with all of your code.
+Otherwise, if you're using jQuery:
+
+```js
+$(function() {
+	FastClick.attach(document.body);
+});
+```
+
+If you're using Browserify or another CommonJS-style module system, the `FastClick.attach` function will be returned when you call `require('fastclick')`. As a result, the easiest way to use FastClick with these loaders is as follows:
+
+```js
+var attachFastClick = require('fastclick');
+attachFastClick(document.body);
+```
+
+### Minified ###
+
+Run `make` to build a minified version of FastClick using the Closure Compiler REST API. The minified file is saved to `build/fastclick.min.js`.
 
 ### AMD ###
 
 FastClick has AMD (Asynchronous Module Definition) support. This allows it to be lazy-loaded with an AMD loader, such as [RequireJS](http://requirejs.org/).
 
-### Component ###
+### Package managers ###
 
-FastClick comes with support for installation via the [Component package manager](https://github.com/component/component).
+You can install FastClick using [Component](https://github.com/component/component), [npm](https://npmjs.org/package/fastclick) or [Bower](http://bower.io/).
 
-### NPM ###
-
-Installation via the [Node Package Manager](https://npmjs.org/package/fastclick) is supported, although Component is preferred as this is not strictly a Node package.
-
-### Minification ###
-
-Run `bin/minify` to build a minified version of FastClick using the Closure Compiler REST API. The minified file is saved to `build/fastclick.min.js`.
+For Ruby, there's a third-party gem called [fastclick-rails](http://rubygems.org/gems/fastclick-rails). For .NET there's a [NuGet package](http://nuget.org/packages/FastClick).
 
 ## Advanced ##
 
-### Ignore certain elements with `needsclick` class ###
+### Ignore certain elements with `needsclick` ###
+
 Sometimes you need FastClick to ignore certain elements. You can do this easily by adding the `needsclick` class.
 ```html
 <a class="needsclick">Ignored by FastClick</a>
 ```
 
 #### Use case 1: non-synthetic click required ####
+
 Internally, FastClick uses `document.createEvent` to fire a synthetic `click` event as soon as `touchend` is fired by the browser. It then suppresses the additional `click` event created by the browser after that. In some cases, the non-synthetic `click` event created by the browser is required, as described in the [triggering focus example](http://ftlabs.github.com/fastclick/examples/focus.html).
 
 This is where the `needsclick` class comes in. Add the class to any element that requires a non-synthetic click.
 
 #### Use case 2: Twitter Bootstrap 2.2.2 dropdowns ####
+
 Another example of when to use the `needsclick` class is with dropdowns in Twitter Bootstrap 2.2.2. Bootstrap add its own `touchstart` listener for dropdowns, so you want to tell FastClick to ignore those. If you don't, touch devices will automatically close the dropdown as soon as it is clicked, because both FastClick and Bootstrap execute the synthetic click, one opens the dropdown, the second closes it immediately after.
 
 ```html
@@ -94,6 +128,10 @@ FastClick is designed to cope with many different browser oddities. Here are som
 * [basic use](http://ftlabs.github.com/fastclick/examples/layer.html) showing the increase in perceived responsiveness
 * [triggering focus](http://ftlabs.github.com/fastclick/examples/focus.html) on an input element from a `click` handler
 * [input element](http://ftlabs.github.com/fastclick/examples/input.html) which never receives clicks but gets fast focus
+
+## Tests ##
+
+There are no automated tests. The files in `tests/` are manual reduced test cases. We've had a think about how best to test these cases, but they tend to be very browser/device specific and sometimes subjective which means it's not so trivial to test.
 
 ## Credits and collaboration ##
 
