@@ -107,6 +107,10 @@ Sometimes you need FastClick to ignore certain elements. You can do this easily 
 <a class="needsclick">Ignored by FastClick</a>
 ```
 
+### Truly ignore certain elements with `fastclick-exempt` ###
+
+The `needsclick` class doesn't actually fully ignore elements, see the following section for its use case. If you need fastclick to fully ignore an element, you can give it the `fastclick-exempt` class. This will allow the browser to handle the event 100% natively.
+
 #### Use case 1: non-synthetic click required ####
 
 Internally, FastClick uses `document.createEvent` to fire a synthetic `click` event as soon as `touchend` is fired by the browser. It then suppresses the additional `click` event created by the browser after that. In some cases, the non-synthetic `click` event created by the browser is required, as described in the [triggering focus example](http://ftlabs.github.com/fastclick/examples/focus.html).
