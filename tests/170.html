@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <style type="text/css">
+        p { font-family: sans-serif; }
+        body { background: #ffffff; }
+    </style>
+    <title>#170</title>
+    <script type="application/javascript" src="../lib/fastclick.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            new FastClick(document.body);
+        });
+        // Change BG to white on popstate.
+        window.addEventListener('popstate', function() {
+            document.body.style.background = '#ffffff';
+        });
+        // Change BG black on beforeunload.
+        window.addEventListener('beforeunload', function() {
+            alert('beforeunload fired');
+            document.body.style.background = '#ff0000';
+        });
+    </script>
+</head>
+<body>
+<p>
+    <p>
+        On iOs and other devices that don't support 'beforeunload', 'beforeunload' is fired using the shim.
+        (this helps for showing loading animations, etc).
+    </p>
+    <p>
+        In this test, the background should turn red momentarily, before the page unloads.
+    </p>
+    <p>
+        Note that this doesn't work with page refresh at this time, only with external links.
+    </p>
+</p>
+<ul>
+    <li><a href="http://www.example.com">Link away</a></li>
+    <li><a href="http://www.google.com">Link away 2</a></li>
+    <li><a href="http://www.yahoo.com">Link away 3</a></li>
+    <li><a href="http://www.example.com" onclick="event.preventDefault()">Link away with default prevented</a></li>
+    <li><a href="http://www.example.com" target="_blank">Link away in new window</a></li>
+    <li><a href="http://www.example.com" target="_top">Link target="_top"</a></li>
+    <li><a href="http://www.example.com" target="_self">Link target="self"</a></li>
+    <li><a href="http://www.example.com" target="jeremy">Link target="jeremy"</a></li>
+    <li><a href="http://www.example.com" target="">Link target=""</a></li>
+    <li><a href="http://www.example.com/#link">Link away with Hash</a></li>
+    <li><a href="#link">Link local with Hash</a></li>
+    <li><a href="mailto:example@example.com">Mailto Link</a></li>
+    <li><a href="javascript:alert('javascript link');">Javascript Link</a></li>
+    <li><a href="http://www.example.com" class="needsclick">Needsclick</a></li>
+
+
+</ul>
+
+</body>
+</html>
