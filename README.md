@@ -8,8 +8,6 @@ FastClick is developed by [FT Labs](http://labs.ft.com/), part of the Financial 
 
 [日本語で説明](https://developer.mozilla.org/ja/docs/Mozilla/Firefox_OS/Apps/Tips_and_techniques#Make_events_immediate)。
 
-[Краткое пояснение на русском языке](http://job-blog.bullgare.ru/2013/02/библиотека-для-более-отзывчивой-рабо/).
-
 ## Why does the delay exist? ##
 
 According to [Google](https://developers.google.com/mobile/articles/fast_buttons):
