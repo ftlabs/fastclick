@@ -37,13 +37,7 @@ Same goes for Chrome on Android (all versions) with `user-scalable=no` in the vi
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 ```
 
-For IE10, you can use `-ms-touch-action: none` to disable double-tap-to-zoom on certain elements (like links and buttons) as described in [this MSDN blog post](http://blogs.msdn.com/b/askie/archive/2013/01/06/how-to-implement-the-ms-touch-action-none-property-to-disable-double-tap-zoom-on-touch-devices.aspx). For example:
-
-```css
-a, input, button {
-	-ms-touch-action: none !important;
-}
-```
+For IE10, you can use `-ms-touch-action: none` to disable double-tap-to-zoom on certain elements (like links and buttons) as described in [this MSDN blog post](http://blogs.msdn.com/b/askie/archive/2013/01/06/how-to-implement-the-ms-touch-action-none-property-to-disable-double-tap-zoom-on-touch-devices.aspx).
 
 You'll then have no tap delay on those elements, without needing FastClick.
 
