@@ -80,7 +80,12 @@ Run `make` to build a minified version of FastClick using the Closure Compiler R
 
 ### AMD ###
 
-FastClick has AMD (Asynchronous Module Definition) support. This allows it to be lazy-loaded with an AMD loader, such as [RequireJS](http://requirejs.org/).
+FastClick has AMD (Asynchronous Module Definition) support. This allows it to be lazy-loaded with an AMD loader, such as [RequireJS](http://requirejs.org/). Note that when using the AMD style require, the full `FastClick` object will be returned, _not_ `FastClick.attach`
+
+```js
+var FastClick = require('fastclick');
+FastClick.attach(document.body);
+```
 
 ### Package managers ###
 
