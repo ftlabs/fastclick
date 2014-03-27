@@ -26,8 +26,8 @@
 </head> 
 <body> 
 	<p>FastClick is instantiated on the body element, so all visible elements on this page will receive fast clicks - except one.</p> 
-	<p>The layers marked <var>A</var> and <var>B</var> both have <code>click</code> handlers that will attempt to trigger focus on the <code>input</code> element programatically. However, <strong>on iOS before version 5.0</strong>, event handlers that are triggered by programmatic events are not allowed to trigger focus on other elements.</p> 
-	<p>On earlier versions of iOS, only <var>B</var> will succeed at triggering focus on the input element, because it has a <code>needsclick</code> class which will instruct FastClick not to trigger a programmatic click and let the system click event go through instread.</p> 
+	<p>The layers marked <var>A</var> and <var>B</var> both have <code>click</code> handlers that will attempt to trigger focus on the <code>input</code> element programatically. However, <strong>on iOS before version 5.0</strong>, touch event handlers are not allowed to trigger focus on other elements.</p> 
+	<p>On earlier versions of iOS, only <var>B</var> will succeed at triggering focus on the input element, because it has a <code>needsclick</code> class which will instruct FastClick not to trigger a programmatic click in the touch event handler and let the system click event go through instread.</p> 
 	<div>
 		<input type="text">
 		<div class="test">A</div> 
