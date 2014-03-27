@@ -1,0 +1,67 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=0">
+    <title>fastclick</title>
+    <script src="../lib/fastclick.js"></script>
+    <style>
+
+    .page
+    {
+        padding: 50px;
+        font-size: 20px;
+        font-family: monospace;
+
+        /* for clickable layer */
+        height: 500px;
+    }
+
+    .input
+    {
+        font-size: 20px;
+
+        width: 100%;
+        height: 30px;
+    }
+
+    .button
+    {
+        text-align: center;
+        color: white;
+
+        margin-bottom: 20px;
+        padding: 10px;
+
+        background: #4a4d51;
+    }
+
+    </style>
+</head>
+<body class="page">
+
+    <div class="button">first, dye to blue!</div>
+    <input class="input" placeholder="then – focus here" id="ok">
+
+    <script>
+        (function(doc) {
+
+            function paint(color) {
+                doc.querySelector('.page').style.background = color;
+            };
+
+            function dye(e) { e.stopPropagation(); paint('#333'); }
+            function clean(e) { e.stopPropagation(); paint('#fff'); }
+
+            doc.querySelector('.button').addEventListener('click', dye);
+            doc.addEventListener('click', clean);
+
+            // fastclick initialization
+            FastClick.attach(doc.body);
+
+        })(document);
+    </script>
+</body>
+</html>
+

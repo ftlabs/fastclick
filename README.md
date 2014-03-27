@@ -8,8 +8,6 @@ FastClick is developed by [FT Labs](http://labs.ft.com/), part of the Financial 
 
 [日本語で説明](https://developer.mozilla.org/ja/docs/Mozilla/Firefox_OS/Apps/Tips_and_techniques#Make_events_immediate)。
 
-[Краткое пояснение на русском языке](http://job-blog.bullgare.ru/2013/02/библиотека-для-более-отзывчивой-рабо/).
-
 ## Why does the delay exist? ##
 
 According to [Google](https://developers.google.com/mobile/articles/fast_buttons):
@@ -33,21 +31,13 @@ FastClick doesn't attach any listeners on desktop browsers.
 
 Chrome 32+ on Android with `width=device-width` in the [viewport meta tag](https://developer.mozilla.org/en-US/docs/Mobile/Viewport_meta_tag) doesn't have a 300ms delay, therefore listeners aren't attached.
 
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
+
 Same goes for Chrome on Android (all versions) with `user-scalable=no` in the viewport meta tag. But be aware that `user-scalable=no` also disables pinch zooming, which may be an accessibility concern.
 
-```html
-<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-```
-
-For IE10, you can use `-ms-touch-action: none` to disable double-tap-to-zoom on certain elements (like links and buttons) as described in [this MSDN blog post](http://blogs.msdn.com/b/askie/archive/2013/01/06/how-to-implement-the-ms-touch-action-none-property-to-disable-double-tap-zoom-on-touch-devices.aspx). For example:
-
-```css
-a, input, button {
-	-ms-touch-action: none !important;
-}
-```
-
-You'll then have no tap delay on those elements, without needing FastClick.
+For IE10, you can use `-ms-touch-action: none` to disable double-tap-to-zoom on certain elements (like links and buttons) as described in [this MSDN blog post](http://blogs.msdn.com/b/askie/archive/2013/01/06/how-to-implement-the-ms-touch-action-none-property-to-disable-double-tap-zoom-on-touch-devices.aspx).
 
 ## Usage ##
 
@@ -90,7 +80,12 @@ Run `make` to build a minified version of FastClick using the Closure Compiler R
 
 ### AMD ###
 
-FastClick has AMD (Asynchronous Module Definition) support. This allows it to be lazy-loaded with an AMD loader, such as [RequireJS](http://requirejs.org/).
+FastClick has AMD (Asynchronous Module Definition) support. This allows it to be lazy-loaded with an AMD loader, such as [RequireJS](http://requirejs.org/). Note that when using the AMD style require, the full `FastClick` object will be returned, _not_ `FastClick.attach`
+
+```js
+var FastClick = require('fastclick');
+FastClick.attach(document.body);
+```
 
 ### Package managers ###
 
@@ -135,4 +130,4 @@ There are no automated tests. The files in `tests/` are manual reduced test case
 
 ## Credits and collaboration ##
 
-The lead developer of FastClick is [Rowan Beentje](http://twitter.com/rowanbeentje) at FT Labs. This fork is currently maintained by [Matthew Caruana Galizia](http://twitter.com/mcaruanagalizia). All open source code released by FT Labs is licenced under the MIT licence. We welcome comments, feedback and suggestions.  Please feel free to raise an issue or pull request. Enjoy.
+FastClick is maintained by [Rowan Beentje](http://twitter.com/rowanbeentje), [Matthew Caruana Galizia](http://twitter.com/mcaruanagalizia) and [Matthew Andrews](http://twitter.com/andrewsmatt) at [FT Labs](http://labs.ft.com). All open source code released by FT Labs is licenced under the MIT licence. We welcome comments, feedback and suggestions.  Please feel free to raise an issue or pull request.
