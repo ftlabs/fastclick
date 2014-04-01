@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+	p { font-family: sans-serif; }
+	textarea { width: 25em; height: 5em; }
+</style>
+<title>#226</title>
+<script type="application/javascript">
+  document.body.addEventListener('touchend', function(event) {
+    console.log('touchend event caught and default prevented', event.target);
+    event.target.focus();
+    event.preventDefault();
+  });
+</script>
+</head>
+<body>
+The follow select can be opened with VoiceOver off, but with VoiceOver on it will not open.
+<select id="sel">
+  <option>First</option>
+  <option>Second</option>
+</select>
+</body>
+</html>
