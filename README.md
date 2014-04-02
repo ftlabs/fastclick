@@ -76,7 +76,7 @@ attachFastClick(document.body);
 
 ### Minified ###
 
-Run `make` to build a minified version of FastClick using the Closure Compiler REST API. The minified file is saved to `build/fastclick.min.js`.
+Run `make` to build a minified version of FastClick using the Closure Compiler REST API. The minified file is saved to `build/fastclick.min.js` or you can [download a pre-minified version](http://build.origami.ft.com/bundles/js?modules=fastclick).
 
 ### AMD ###
 
