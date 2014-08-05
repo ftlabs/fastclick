@@ -10,35 +10,49 @@
 <title>#6</title>
 <script type="application/javascript" src="../lib/fastclick.js"></script>
 <script type="application/javascript">
+
+	var setStyle = function(e) {
+		e.style.width = "100px";
+		e.style.height = "100px";
+	}
+
+	startDynamicContentCreation = function() {
+		var b1 = document.createElement("button");
+		b1.appendChild(document.createTextNode("Run Ghost check"));
+		setStyle(b1);
+
+		b1.addEventListener("click", function() {
+			
+			var b2 = document.createElement("button");
+			b2.appendChild(document.createTextNode("Ghost Click Busted!"));
+			setStyle(b2);
+			b2.addEventListener("click", function() {
+				b2.innerHTML = "Boo its a ghost";
+			});
+			document.getElementById("buttons").appendChild(b2);
+			FastClick.attach(b2);
+
+			b1.style.display="none";
+
+		});
+
+		document.getElementById("buttons").appendChild(b1);
+		FastClick.attach(b1);
+	}
+
 	window.addEventListener('load', function() {
 
-		console.log("LOADED")
-
-		document.getElementById("button").addEventListener("click", function() {
-			
-			document.getElementById("button2").style.display="inline-block";
-
-			document.getElementById("button").style.display="none";
-			
-		});
-
-		document.getElementById("button2").addEventListener("click", function() {
-			document.getElementById("button2").innerHTML = "Boo its a ghost";
-		});
-
-		new FastClick(document.getElementById("button"));
-		new FastClick(document.getElementById("button2"));
+		console.log("LOADED");
+		FastClick.attach(document.body);
+		startDynamicContentCreation();
+		
 	}, false);
 
-	start = function() {
-		
-	}
+	
 </script>
 </head>
 <body>
-	
-	<div id="button" class="big">Ghost click check</div>
-	<div id="button2" class="big" style="display:none;">Ghost bustered!</div>
-	<div class="big" onclick="start()"></div>
+	<div id="buttons">
+	</div>
 </body>
 </html>
