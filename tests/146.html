@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+	p { font-family: sans-serif; }
+	textarea { width: 25em; height: 15em; }
+	.big { width:100px; height:100px; border-style: solid; }
+</style>
+<title>#6</title>
+<script type="application/javascript" src="../lib/fastclick.js"></script>
+<script type="application/javascript">
+	window.addEventListener('load', function() {
+
+		console.log("LOADED")
+
+		document.getElementById("button").addEventListener("click", function() {
+			
+			document.getElementById("button2").style.display="inline-block";
+
+			document.getElementById("button").style.display="none";
+			
+		});
+
+		document.getElementById("button2").addEventListener("click", function() {
+			document.getElementById("button2").innerHTML = "Boo its a ghost";
+		});
+
+		new FastClick(document.getElementById("button"));
+		new FastClick(document.getElementById("button2"));
+	}, false);
+
+	start = function() {
+		
+	}
+</script>
+</head>
+<body>
+	
+	<div id="button" class="big">Ghost click check</div>
+	<div id="button2" class="big" style="display:none;">Ghost bustered!</div>
+	<div class="big" onclick="start()"></div>
+</body>
+</html>
