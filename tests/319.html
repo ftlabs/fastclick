@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>#42</title>
+<title>#319</title>
 <meta charset='utf-8' />
 
 <meta name="viewport" content="initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
@@ -19,7 +19,7 @@
 	Now when you scroll the content really fast, and click the link before the scrolling stops.
 	Chances are what you have clicked is not what see under your finger, but rather the link which lay at that position sometime during your scroll.
 
-	See also #319 (horizontal scrolling)
+	This bug is identical to #42 except it is for horizontal scrolling rather than vertical scrolling
 
 -->
 <style>
@@ -41,15 +41,20 @@
 	-webkit-transform: translate3d(0,0,0);
 }
 a {
-	display: block;
+	display: inline-block;
 	background: #aaa;
 	padding: 10px 0;
 	margin: 5px 0;
+	width: 200px;
 	height: 200px;
 	font-size: 22px;
 	line-height: 200px;
 	vertical-align: center;
-	text-align: center;
+	text-align: center; 
+}
+
+.holder {
+	white-space: nowrap;
 }
 #everything {
 	width: 100%;
@@ -89,6 +94,7 @@ a {
 <body>
 <div id="everything">
 	<div id="content" class="ios5">
+		<div class="holder">
 		<a>1</a>
 		<a>2</a>
 		<a>3</a>
@@ -189,6 +195,7 @@ a {
 		<a>98</a>
 		<a>99</a>
 		<a>100</a>
+		</div>
 	</div>
 </body>
 </html>
