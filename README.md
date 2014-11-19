@@ -37,7 +37,7 @@ Chrome 32+ on Android with `width=device-width` in the [viewport meta tag](https
 
 Same goes for Chrome on Android (all versions) with `user-scalable=no` in the viewport meta tag. But be aware that `user-scalable=no` also disables pinch zooming, which may be an accessibility concern.
 
-For IE10+, you can use `-ms-touch-action: manipulation; touch-action: manipulation;` to disable double-tap-to-zoom on certain elements (like links and buttons).
+For IE11+, you can use `touch-action: manipulation;` to disable double-tap-to-zoom on certain elements (like links and buttons).  For IE10 use `-ms-touch-action: manipulation`.
 
 ## Usage ##
 
