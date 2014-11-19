@@ -91,7 +91,7 @@ FastClick has AMD (Asynchronous Module Definition) support. This allows it to be
 
 ```js
 var FastClick = require('fastclick');
-FastClick(document.body, options);
+FastClick.attach(document.body, options);
 ```
 
 ### Package managers ###
