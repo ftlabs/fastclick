@@ -52,14 +52,14 @@ The script must be loaded prior to instantiating FastClick on any element of the
 To instantiate FastClick on the `body`, which is the recommended method of use:
 
 ```js
-window.addEventListener('load', function() {
-	FastClick.attach(document.body);
-}, false);
+if ('addEventListener' in document) {
+	document.addEventListener('DOMContentLoaded', function() {
+		FastClick.attach(document.body);
+	}, false);
+}
 ```
 
-Don't forget to add a [shim](https://developer.mozilla.org/en-US/docs/DOM/EventTarget.removeEventListener#Compatibility) for `addEventListener` if you want to support IE8 and below.
-
-Otherwise, if you're using jQuery:
+Or, if you're using jQuery:
 
 ```js
 $(function() {
