@@ -37,7 +37,7 @@ Chrome 32+ on Android with `width=device-width` in the [viewport meta tag](https
 
 Same goes for Chrome on Android (all versions) with `user-scalable=no` in the viewport meta tag. But be aware that `user-scalable=no` also disables pinch zooming, which may be an accessibility concern.
 
-For IE10, you can use `-ms-touch-action: none` to disable double-tap-to-zoom on certain elements (like links and buttons) as described in [this MSDN blog post](http://blogs.msdn.com/b/askie/archive/2013/01/06/how-to-implement-the-ms-touch-action-none-property-to-disable-double-tap-zoom-on-touch-devices.aspx).
+For IE11+, you can use `touch-action: manipulation;` to disable double-tap-to-zoom on certain elements (like links and buttons).  For IE10 use `-ms-touch-action: manipulation`.
 
 ## Usage ##
 
@@ -52,14 +52,14 @@ The script must be loaded prior to instantiating FastClick on any element of the
 To instantiate FastClick on the `body`, which is the recommended method of use:
 
 ```js
-window.addEventListener('load', function() {
-	FastClick.attach(document.body);
-}, false);
+if ('addEventListener' in document) {
+	document.addEventListener('DOMContentLoaded', function() {
+		FastClick.attach(document.body);
+	}, false);
+}
 ```
 
-Don't forget to add a [shim](https://developer.mozilla.org/en-US/docs/DOM/EventTarget.removeEventListener#Compatibility) for `addEventListener` if you want to support IE8 and below.
-
-Otherwise, if you're using jQuery:
+Or, if you're using jQuery:
 
 ```js
 $(function() {
@@ -78,13 +78,20 @@ attachFastClick(document.body);
 
 Run `make` to build a minified version of FastClick using the Closure Compiler REST API. The minified file is saved to `build/fastclick.min.js` or you can [download a pre-minified version](http://build.origami.ft.com/bundles/js?modules=fastclick).
 
+Note: the pre-minified version is built using [our build service](http://origami.ft.com/docs/developer-guide/build-service/) which exposes the `FastClick` object through `Origami.fastclick` and will have the Browserify/CommonJS API (see above).
+
+```js
+var attachFastClick = Origami.fastclick;
+attachFastClick(document.body);
+```
+
 ### AMD ###
 
 FastClick has AMD (Asynchronous Module Definition) support. This allows it to be lazy-loaded with an AMD loader, such as [RequireJS](http://requirejs.org/). Note that when using the AMD style require, the full `FastClick` object will be returned, _not_ `FastClick.attach`
 
 ```js
 var FastClick = require('fastclick');
-FastClick.attach(document.body);
+FastClick.attach(document.body, options);
 ```
 
 ### Package managers ###
