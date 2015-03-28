@@ -1,0 +1,22 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+<script type="application/javascript" src="../lib/fastclick.js"></script> 
+<script type="application/javascript">
+	window.addEventListener('load', function () {
+		new FastClick(document.body);
+	}, false);
+</script> 
+<style type="text/css">
+	textarea { width: 20em; height: 10em; }
+	input[type=text] { width: 20em; height 3em; }
+</style>
+<title>#338</title>
+</head> 
+<body>
+	<p>Tap (not long tap) below textarea/input and confirm that cursor is moved end of contents.</p>
+	<textarea id="text_body">textarea string textarea string textarea string textarea string textarea string textarea string textarea string</textarea><br>
+	<input type="text" value="input text string input text string">
+</body> 
+</html>
