@@ -109,6 +109,15 @@ Sometimes you need FastClick to ignore certain elements. You can do this easily 
 <a class="needsclick">Ignored by FastClick</a>
 ```
 
+You can also provide a custom function to evaluate whether a click is needed, through the `needsclick` option. The default needsclick function fixes some known issues so your custom function should typically still call `this.defaultNeedsClick`.
+```js
+    FastClick.attach(document.body, {
+        needsClick: function(target) {
+            return this.defaultNeedsClick(target) || (/\balsoneedsclick\b/).test(target.className);
+        }
+    });
+```
+
 #### Use case 1: non-synthetic click required ####
 
 Internally, FastClick uses `document.createEvent` to fire a synthetic `click` event as soon as `touchend` is fired by the browser. It then suppresses the additional `click` event created by the browser after that. In some cases, the non-synthetic `click` event created by the browser is required, as described in the [triggering focus example](http://ftlabs.github.com/fastclick/examples/focus.html).
