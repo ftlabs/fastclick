@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta http-equiv="cleartype" content="on">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width">
+  <title>Fastclick test</title>
+  <script type="application/javascript" src="../lib/fastclick.js"></script> 
+
+  <style>
+    ul {
+      padding-left: 0;
+      list-style: none;
+    }
+    li {
+      display: block;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      margin-left: 0;
+    }
+    li:active {
+      background: #f8f8f8;
+    }
+    li.clicked {
+      background: #555;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+    <li>list</li>
+  </ul>
+</body>
+  <script>
+    FastClick.attach(document.body);
+    
+    var lis = document.querySelectorAll('li');
+    for (var i = 0; i < lis.length; i++) {
+      var element = lis[i];
+      element.onclick = function(e) {
+        e.target.classList.add('clicked');
+      };
+    }
+  </script>
+</html>
