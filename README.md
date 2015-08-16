@@ -44,7 +44,7 @@ For IE11+, you can use `touch-action: manipulation;` to disable double-tap-to-zo
 Include fastclick.js in your JavaScript bundle or add it to your HTML page like this:
 
 ```html
-<script type='application/javascript' src='/path/to/fastclick.js'></script>
+<script src='/path/to/fastclick.js' async defer></script>
 ```
 
 The script must be loaded prior to instantiating FastClick on any element of the page.
