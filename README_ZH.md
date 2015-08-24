@@ -43,7 +43,7 @@ Android上的Chrome 32+在[viewport meta tag](https://developer.mozilla.org/en-U
 
 ## 用法 ##
 
-在您的JavaScript脚本集合中包含fastclick.js或者把它加进您的HTML页面。就像这样：
+在您的JavaScript脚本集合中包含fastclick.js，或者把它加进您的HTML页面。就像这样：
 
 
 ```html
@@ -81,7 +81,7 @@ attachFastClick(document.body);
 
 运行`make`来借助Closure Compiler REST API构建一个压缩版的FastClick。压缩后的文件会被保存到`build/fastclick.min.js`，或者您可以[下载预压缩版](http://build.origami.ft.com/bundles/js?modules=fastclick)。
 
-注意：预压缩版使用[我们的构建服务](http://origami.ft.com/docs/developer-guide/build-service/)构建。这版本通过`Origami.fastclick`暴露了`FastClick`对象，并且有Browserify/CommonJS API（见上文）
+注意：预压缩版使用[我们的构建服务](http://origami.ft.com/docs/developer-guide/build-service/)构建。这个版本通过`Origami.fastclick`暴露了`FastClick`对象，并且有Browserify/CommonJS API（见上文）
 
 ```js
 var attachFastClick = Origami.fastclick;
@@ -137,10 +137,10 @@ FastClick被设计用来对付许多不同的浏览器奇葩现象。下面是�
 
 ## 测试 ##
 
-本库未经自动化测试。`tests/`目录中的文件都是手动执行的测试用例。我们考虑过执行这些测试的最佳方式，但是它们都很依赖于具体的浏览器/设备，甚至有的很主观，所以并没有必要进行太过琐碎的自动化测试。
+本库未经自动化测试。`tests/`目录中的文件都是手动执行的测试用例。我们考虑过执行这些测试的最佳方式，但是它们都很依赖于具体的浏览器/设备，甚至有的很主观，所以测试并非很简单。
 
 ## 感谢与协作 ##
 
-FastClick 由[FT Labs](http://labs.ft.com)的[Rowan Beentje](http://twitter.com/rowanbeentje)、 [Matthew Caruana Galizia](http://twitter.com/mcaruanagalizia) 和 [Matthew Andrews](http://twitter.com/andrewsmatt) 维护。 所有FT Labs开放的源代码均采用MIT许可证。我们欢迎评论、反馈和建议。如果想提出issue或者pull request，请不要顾虑。
+FastClick由[FT Labs](http://labs.ft.com)的[Rowan Beentje](http://twitter.com/rowanbeentje), [Matthew Caruana Galizia](http://twitter.com/mcaruanagalizia) 和 [Matthew Andrews](http://twitter.com/andrewsmatt) 维护。 所有FT Labs开放的源代码均采用MIT许可证。我们欢迎评论、反馈和建议。如果想提出issue或者pull request，请不要顾虑。
 
 The Chinese version of this document is translated by [Harry Chen](https://www.github.com/Harry-Chen).

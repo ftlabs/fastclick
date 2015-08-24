@@ -8,7 +8,7 @@ FastClick is developed by [FT Labs](http://labs.ft.com/), part of the Financial 
 
 [日本語で説明](https://developer.mozilla.org/ja/docs/Mozilla/Firefox_OS/Apps/Tips_and_techniques#Make_events_immediate)。
 
-[中文说明](https://github.com/ftlabs/fastclick/blob/master/README_ZH.md)。
+[中文说明](https://github.com/ftlabs/fastclick/blob/master/README_ZH.md).
 
 ## Why does the delay exist? ##
 
