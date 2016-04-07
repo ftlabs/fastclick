@@ -1,4 +1,4 @@
-{
+{ 
   "name": "fastclick",
   "main": "lib/fastclick.js",
   "ignore": [
