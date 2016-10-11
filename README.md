@@ -105,6 +105,7 @@ For Ruby, there's a third-party gem called [fastclick-rails](http://rubygems.org
 ### Ignore certain elements with `needsclick` ###
 
 Sometimes you need FastClick to ignore certain elements. You can do this easily by adding the `needsclick` class.
+
 ```html
 <a class="needsclick">Ignored by FastClick</a>
 ```
@@ -122,6 +123,24 @@ Another example of when to use the `needsclick` class is with dropdowns in Twitt
 ```html
 <a class="dropdown-toggle needsclick" data-toggle="dropdown">Dropdown</a>
 ```
+
+### Whitelisting ###
+
+If you'd rather opt-in to using FastClick instead of using the `.needsclick` class, you can specify a CSS selector string that elements must must in order for FastClick's magic to be applied. For example:
+
+```js
+FastClick.attach(document.body, {
+    // only enable for elements with the .fastlcick class and their children
+    selector: '.fastclick, .fastclick *'
+});
+```
+
+```html
+<a>Ignored by FastClick</a>
+<a class="fastclick">Uses FastClick</a>
+```
+
+**Warning**: This does not work on all browser versions generally supported by FastClick. If you need to support devices that don't support [`element.matches()` or `element.matchesSelector()`](http://caniuse.com/#search=matches), you should not rely on this functionality. If a selector is specified for an unsupported browser, FastClick will disregard the selector and perform the default FastClick behavior.
 
 ## Examples ##
 
