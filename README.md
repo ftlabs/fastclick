@@ -126,7 +126,7 @@ Another example of when to use the `needsclick` class is with dropdowns in Twitt
 
 ### Whitelisting ###
 
-If you'd rather opt-in to using FastClick instead of using the `.needsclick` class, you can specify a CSS selector string that elements must must in order for FastClick's magic to be applied. For example:
+If you'd rather opt-in to using FastClick instead of using the `.needsclick` class, you can specify a CSS selector string that elements must match in order for FastClick's magic to be applied. For example:
 
 ```js
 FastClick.attach(document.body, {
