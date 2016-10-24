@@ -126,7 +126,7 @@ Another example of when to use the `needsclick` class is with dropdowns in Twitt
 
 ### Whitelisting ###
 
-If you'd rather opt-in to using FastClick instead of using the `.needsclick` class, you can specify a CSS selector string that elements must match in order for FastClick's magic to be applied. For example:
+If you'd rather opt-in to using FastClick instead of opting out with the `.needsclick` class, you can specify a CSS selector that elements must match in order to make use of FastClick's magic. For example:
 
 ```js
 FastClick.attach(document.body, {
@@ -140,7 +140,7 @@ FastClick.attach(document.body, {
 <a class="fastclick">Uses FastClick</a>
 ```
 
-**Warning**: This does not work on all browser versions generally supported by FastClick. If you need to support devices that don't support [`element.matches()` or `element.matchesSelector()`](http://caniuse.com/#search=matches), you should not rely on this functionality. If a selector is specified for an unsupported browser, FastClick will disregard the selector and perform the default FastClick behavior.
+**Warning**: This does not work on all browser versions generally supported by FastClick. If you need to support devices that don't support [`element.matches()` or `element.matchesSelector()`](http://caniuse.com/#search=matches) (e.g., Android 2.1 and below, iOS 3 and below, etc.), you should **not rely on this functionality**. If a selector is specified for an unsupported browser, FastClick will disregard the selector and perform the default FastClick behavior.
 
 ## Examples ##
 
