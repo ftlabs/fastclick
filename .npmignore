@@ -1,5 +1,7 @@
 .gitignore
-Makefile
+.npmignore
+bower.json
 component.json
-tests
 examples
+Makefile
+tests
