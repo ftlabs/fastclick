@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+	p { font-family: sans-serif; }
+</style>
+<title>#160</title>
+<script type="application/javascript" src="../lib/fastclick.js"></script>
+<script type="application/javascript">
+	window.addEventListener('load', function() {
+		FastClick.attach(document.body);
+	}, false);
+</script>
+</head>
+<body>
+	<p>Calling elem.setSelectionRange on inputs with type number throws an InvalidStateError.</p>
+	<form>
+		<p>Test (number):</p>
+		<input type="number" name="test">
+		<p>Test (email):</p>
+		<input type="email" name="test">
+		<p>Control:</p>
+		<input name="control">
+	</form>
+</body>
+</html>
