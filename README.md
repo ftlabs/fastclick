@@ -4,6 +4,8 @@ FastClick is a simple, easy-to-use library for eliminating the 300ms delay betwe
 
 FastClick is developed by [FT Labs](http://labs.ft.com/), part of the Financial Times.
 
+*Note: As of late 2015 most mobile browsers - notably Chrome and Safari - no longer have a 300ms touch delay, so fastclick offers no benefit on newer browsers, and risks introducing [bugs](https://github.com/ftlabs/fastclick/issues) into your application. Consider carefully whether you really need to use it.*
+
 [Explication en français](http://maxime.sh/2013/02/supprimer-le-lag-des-clics-sur-mobile-avec-fastclick/).
 
 [日本語で説明](https://developer.mozilla.org/ja/docs/Mozilla/Firefox_OS/Apps/Tips_and_techniques#Make_events_immediate)。
