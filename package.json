@@ -1,5 +1,5 @@
 {
-  "name": "fastclick-patch",
+  "name": "ant-ife/fastclick",
   "version": "1.0.6",
   "description": "Polyfill to remove click delays on browsers with touch UIs.",
   "maintainers": [
@@ -21,12 +21,20 @@
     {
       "name": "Matthew Caruana Galizia",
       "email": "m@m.cg"
+    },
+    {
+      "name": "Bruce Jia",
+      "email": "bruce.jcw@gmail.com"
+    },
+    {
+      "name": "David Tse",
+      "email": "xiekw2010@gmail.com"
     }
   ],
   "main": "lib/fastclick.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ftlabs/fastclick.git"
+    "url": "git://github.com/ant-ife/fastclick.git"
   },
   "keywords": [
     "fastclick",
@@ -45,5 +53,5 @@
   "implements": [
     "CommonJS/Modules/1.0"
   ],
-  "homepage": "https://github.com/ftlabs/fastclick"
+  "homepage": "https://github.com/ant-ife/fastclick"
 }
