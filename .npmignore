@@ -5,3 +5,4 @@ component.json
 examples
 Makefile
 tests
+node_modules
