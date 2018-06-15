@@ -1,22 +1,22 @@
 <!DOCTYPE html> 
 <html> 
 <head> 
-<meta name="viewport" content="width=device-width, initial-scale=1"> 
-<style type="text/css"> 
-	p, label { font-family: sans-serif; }
-	.test { text-align: center; }
-	input[type=text] { height: 3em; width: 10em; }
-	label { display: block; background: gray; line-height: 2em; display: inline-block; font-weight: bold; }
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<style type="text/css"> 
+		p, label { font-family: sans-serif; }
+		.test { text-align: center; }
+		input[type=text] { height: 3em; width: 10em; }
+		label { display: block; background: gray; line-height: 2em; display: inline-block; font-weight: bold; }
 
-	/* Disable certain interactions on touch devices */
-	body { -webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-select: none; -webkit-highlight: none; -webkit-tap-highlight-color: rgba(0,0,0,0); }
-</style> 
-<script type="application/javascript" src="../lib/fastclick.js"></script> 
-<script type="application/javascript">
-	window.addEventListener('load', function () {
-		FastClick.attach(document.body);
-	}, false);
-</script> 
+		/* Disable certain interactions on touch devices */
+		body { -webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-select: none; -webkit-highlight: none; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+	</style> 
+	<script type="application/javascript" src="../lib/fastclick.js"></script> 
+	<script type="application/javascript">
+		window.addEventListener('load', function () {
+			FastClick.attach(document.body);
+		}, false);
+	</script> 
 </head> 
 <body> 
 	<p>FastClick is instantiated on the body element, but the <code>input</code> element below will not receive fast clicks. Instead <code>focus()</code> will be called on the input element when <code>touchend</code> fires.</p>
