@@ -6,3 +6,4 @@ examples
 Makefile
 tests
 node_modules
+.idea
