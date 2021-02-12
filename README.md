@@ -117,9 +117,9 @@ Internally, FastClick uses `document.createEvent` to fire a synthetic `click` ev
 
 This is where the `needsclick` class comes in. Add the class to any element that requires a non-synthetic click.
 
-#### Use case 2: Twitter Bootstrap 2.2.2 dropdowns ####
+#### Use case 2: Twitter Bootstrap dropdowns (2.1.x and 2.2.x) ####
 
-Another example of when to use the `needsclick` class is with dropdowns in Twitter Bootstrap 2.2.2. Bootstrap add its own `touchstart` listener for dropdowns, so you want to tell FastClick to ignore those. If you don't, touch devices will automatically close the dropdown as soon as it is clicked, because both FastClick and Bootstrap execute the synthetic click, one opens the dropdown, the second closes it immediately after.
+Another example of when to use the `needsclick` class is with dropdowns in Twitter Bootstrap 2.1.x and 2.2.x. Bootstrap add its own `touchstart` listener for dropdowns, so you want to tell FastClick to ignore those. If you don't, touch devices will automatically close the dropdown as soon as it is clicked, because both FastClick and Bootstrap execute the synthetic click, one opens the dropdown, the second closes it immediately after.  This issue was resolved in Twitter Bootstrap 2.3.0 and later releases (including 3.0.0) which no longer register a `touchstart` listener.
 
 ```html
 <a class="dropdown-toggle needsclick" data-toggle="dropdown">Dropdown</a>
