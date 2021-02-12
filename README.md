@@ -49,6 +49,12 @@ Include fastclick.js in your JavaScript bundle or add it to your HTML page like 
 <script type='application/javascript' src='/path/to/fastclick.js'></script>
 ```
 
+Or add it through a CDN:
+
+```
+<script src='https://cdn.jsdelivr.net/npm/fastclick@1/lib/fastclick.js'></script>
+```
+
 The script must be loaded prior to instantiating FastClick on any element of the page.
 
 To instantiate FastClick on the `body`, which is the recommended method of use:
