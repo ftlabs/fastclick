@@ -2,6 +2,8 @@
 
 FastClick is a simple, easy-to-use library for eliminating the 300ms delay between a physical tap and the firing of a `click` event on mobile browsers. The aim is to make your application feel less laggy and more responsive while avoiding any interference with your current logic.
 
+This Ntree fork fixes a bug on touch. https://github.com/ftlabs/fastclick/issues/466
+
 FastClick is developed by [FT Labs](http://labs.ft.com/), part of the Financial Times.
 
 *Note: As of late 2015 most mobile browsers - notably Chrome and Safari - no longer have a 300ms touch delay, so fastclick offers no benefit on newer browsers, and risks introducing [bugs](https://github.com/ftlabs/fastclick/issues) into your application. Consider carefully whether you really need to use it.*
