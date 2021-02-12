@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="application/javascript" src="../lib/fastclick.js"></script>
+    <title>Needsclick Not working on SVGs - target.className is an SVG Animated String</title>
+    <script type="application/javascript">
+        var circleClick = function(e) {
+            var isTrue  = '<span style="color: green">True</span>';
+            var isFalse = '<span style="color: red">False</span>';
+            document.querySelector('h1').innerHTML = 'Needs Click Working = ' +
+                    (e.forwardedTouchEvent ? isFalse : isTrue);
+        };
+        window.addEventListener('load', function() {
+            FastClick.attach(document.body);
+
+            var svgCircle = document.querySelector('.svg-circle');
+            svgCircle.addEventListener('click', circleClick);
+        }, false);
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Needs Click Working = Unknown</h1>
+        <svg height="400" width="400" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="200" cy="100" r="50" fill="#000000" stroke="#000000" class="svg-circle needsclick"></circle>
+            <text x="200" y="200" font-size="25" style="text-anchor: middle">Click Circle</text>
+            <text x="200" y="225" font-size="20" style="text-anchor: middle" onclick="window.location.reload();">Reset</text>
+        </svg>
+    </div>
+</body>
+</html>
