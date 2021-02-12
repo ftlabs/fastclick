@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>FastClick by ftlabs</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>FastClick</h1>
+        <p>Polyfill to remove click delays on browsers with touch UIs</p>
+
+        <p class="view"><a href="https://github.com/ftlabs/fastclick">View the Project on GitHub <small>ftlabs/fastclick</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/ftlabs/fastclick/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/ftlabs/fastclick/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/ftlabs/fastclick">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>FastClick</h1>
+
+<p>FastClick is a simple, easy-to-use library for eliminating the 300ms delay between a physical tap and the firing of a <code>click</code> event on mobile browsers. The aim is to make your application feel less laggy and more responsive while avoiding any interference with your current logic.</p>
+
+<p>FastClick is developed by <a href="http://labs.ft.com/">FT Labs</a>, part of the Financial Times.</p>
+
+<h2>Compatibility</h2>
+
+<p>The library has been deployed as part of the <a href="http://app.ft.com/">FT Web App</a> and is tried and tested on the following mobile browsers:</p>
+
+<ul>
+<li>Mobile Safari on iOS 3 and upwards</li>
+<li>Chrome on iOS 5 and upwards</li>
+<li>Chrome on Android (ICS)</li>
+<li>Opera Mobile 11.5 and upwards</li>
+<li>Android Browser since Honeycomb</li>
+<li>PlayBook OS 1 and upwards</li>
+</ul><p>FastClick doesn't attach any listeners on desktop browsers as it is not needed. Those that have been tested are:</p>
+
+<ul>
+<li>Safari</li>
+<li>Chrome</li>
+<li>Internet Explorer</li>
+<li>Firefox</li>
+<li>Opera</li>
+</ul><h2>Usage</h2>
+
+<p>Include fastclick.js in your JavaScript bundle or add it to your HTML page like this:</p>
+
+<div class="highlight"><pre><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">'application/javascript'</span> <span class="na">src=</span><span class="s">'/path/to/fastclick.js'</span><span class="nt">&gt;&lt;/script&gt;</span>
+</pre></div>
+
+<p>The script must be loaded prior to instantiating FastClick on any element of the page.</p>
+
+<p>To instantiate FastClick on the <code>body</code>, which is the recommended method of use:</p>
+
+<div class="highlight"><pre><span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'load'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">new</span> <span class="nx">FastClick</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">);</span>
+<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+</pre></div>
+
+<h2>Advanced</h2>
+
+<p>Internally, FastClick uses <code>document.createEvent</code> to fire a synthetic <code>click</code> event as soon as <code>touchend</code> is fired by the browser. It then suppresses the additional <code>click</code> event created by the browser after that. In some cases, the non-synthetic <code>click</code> event created by the browser is required, as described in the <a href="http://ftlabs.github.com/fastclick/examples/focus.html">triggering focus example</a>.</p>
+
+<p>This is where the <code>needsclick</code> class comes in. Add the class to any element that requires a non-synthetic click.</p>
+
+<h2>Examples</h2>
+
+<p>FastClick is designed to cope with many different browser oddities. Here are some examples to illustrate this:</p>
+
+<ul>
+<li>
+<a href="http://ftlabs.github.com/fastclick/examples/layer.html">basic use</a> showing the increase in perceived responsiveness</li>
+<li>
+<a href="http://ftlabs.github.com/fastclick/examples/focus.html">triggering focus</a> on an input element from a <code>click</code> handler</li>
+<li>
+<a href="http://ftlabs.github.com/fastclick/examples/input.html">input element</a> which never receives fast clicks</li>
+</ul><h2>Google Closure Compiler</h2>
+
+<p>FastClick supports compilation with <code>ADVANCED_OPTIMIZATIONS</code> ('advanced mode'), which should reduce its size by about 70% (60% gzipped). Note that exposure of the <code>FastClick</code> variable isn't forced therefore you must compile it along with all of your code.</p>
+
+<h2>Credits and collaboration</h2>
+
+<p>The lead developer of FastClick is <a href="http://twitter.com/rowanbeentje">Rowan Beentje</a> at FT Labs. This fork is currently maintained by <a href="http://twitter.com/mcaruanagalizia">Matthew Caruana Galizia</a>, also at FT Labs. All open source code released by FT Labs is licenced under the MIT licence. We welcome comments, feedback and suggestions.  Please feel free to raise an issue or pull request. Enjoy.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/ftlabs">ftlabs</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
