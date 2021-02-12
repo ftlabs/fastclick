@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style type="text/css">
-	p, .test { font-family: sans-serif; }
-	.test { margin: 1em auto; width: 6em; line-height: 4em; border: 1px solid black; font-size: 2em; text-align: center; }
-	.stats, .stats input { font-family: monospace; font-size: 0.9em; }
-	input { width: 10em; }
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style type="text/css">
+		p, .test { font-family: sans-serif; }
+		.test { margin: 1em auto; width: 6em; line-height: 4em; border: 1px solid black; font-size: 2em; text-align: center; }
+		.stats, .stats input { font-family: monospace; font-size: 0.9em; }
+		input { width: 10em; }
 
-	/* Disable certain interactions on touch devices */
-	body { -webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-select: none; -webkit-highlight: none; -webkit-tap-highlight-color: rgba(0,0,0,0); }
-</style>
-<script type="application/javascript" src="../lib/fastclick.js"></script>
-<script type="application/javascript">
-	window.addEventListener('load', function() {
-		var testA, testB, teTime, cTime;
+		/* Disable certain interactions on touch devices */
+		body { -webkit-touch-callout: none; -webkit-text-size-adjust: none; -webkit-user-select: none; -webkit-highlight: none; -webkit-tap-highlight-color: rgba(0,0,0,0); }
+	</style>
+	<script type="application/javascript" src="../lib/fastclick.js"></script>
+	<script type="application/javascript">
+		window.addEventListener('load', function() {
+			var testA, testB, teTime, cTime;
 
-		testA = document.getElementById('test-a');
-		testB = document.getElementById('test-b');
+			testA = document.getElementById('test-a');
+			testB = document.getElementById('test-b');
 
-		// Android 2.2 needs FastClick to be instantiated before the other listeners so that the stopImmediatePropagation hack can work.
-		FastClick.attach(testB);
+			// Android 2.2 needs FastClick to be instantiated before the other listeners so that the stopImmediatePropagation hack can work.
+			FastClick.attach(testB);
 
-		testA.addEventListener('touchend', function(event) {
-			teTime = Date.now();
-			document.getElementById('te-time').value = teTime;
+			testA.addEventListener('touchend', function(event) {
+				teTime = Date.now();
+				document.getElementById('te-time').value = teTime;
+			}, false);
+
+			testA.addEventListener('click', function(event) {
+				cTime = Date.now();
+				document.getElementById('c-time').value = cTime;
+				document.getElementById('d-time').value = cTime - teTime;
+				testA.style.backgroundColor = testA.style.backgroundColor ? '' : 'YellowGreen';
+			}, false);
+
+			testB.addEventListener('touchend', function(event) {
+				teTime = Date.now();
+				document.getElementById('te-time').value = teTime;
+				document.getElementById('d-time').value = cTime - teTime;
+			}, false);
+
+			testB.addEventListener('click', function(event) {
+				cTime = Date.now();
+				document.getElementById('c-time').value = cTime;
+				testB.style.backgroundColor = testB.style.backgroundColor ? '' : 'YellowGreen';
+			}, false);
 		}, false);
-
-		testA.addEventListener('click', function(event) {
-			cTime = Date.now();
-			document.getElementById('c-time').value = cTime;
-			document.getElementById('d-time').value = cTime - teTime;
-			testA.style.backgroundColor = testA.style.backgroundColor ? '' : 'YellowGreen';
-		}, false);
-
-		testB.addEventListener('touchend', function(event) {
-			teTime = Date.now();
-			document.getElementById('te-time').value = teTime;
-			document.getElementById('d-time').value = cTime - teTime;
-		}, false);
-
-		testB.addEventListener('click', function(event) {
-			cTime = Date.now();
-			document.getElementById('c-time').value = cTime;
-			testB.style.backgroundColor = testB.style.backgroundColor ? '' : 'YellowGreen';
-		}, false);
-	}, false);
-</script>
+	</script>
 </head>
 <body>
 	<p>Layer A responds to click events normally, which on iOS will introduce a 300ms delay.</p>
