@@ -1,4 +1,4 @@
-{
+{ 
   "name": "fastclick",
   "license": "MIT",
   "main": "lib/fastclick.js",
