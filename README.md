@@ -69,6 +69,16 @@ $(function() {
 });
 ```
 
+Or, if you're loading scripts dynamically:
+
+```js
+loadScript('/path/to/fastclick.js').then(_ => {
+	if (document.readyState == "complete") {
+		FastClick.attach(document.body);
+	}
+})
+```
+
 If you're using Browserify or another CommonJS-style module system, the `FastClick.attach` function will be returned when you call `require('fastclick')`. As a result, the easiest way to use FastClick with these loaders is as follows:
 
 ```js
