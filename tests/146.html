@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<style type="text/css">
+	p { font-family: sans-serif; }
+	textarea { width: 25em; height: 15em; }
+	.big { width:100px; height:100px; border-style: solid; }
+</style>
+<title>#146</title>
+<script type="application/javascript" src="../lib/fastclick.js"></script>
+<script type="application/javascript">
+
+	var setStyle = function(e) {
+		e.style.width = "100px";
+		e.style.height = "100px";
+	}
+
+	startDynamicContentCreation = function() {
+		var b1 = document.createElement("button");
+		b1.appendChild(document.createTextNode("Run Ghost check"));
+		setStyle(b1);
+
+		b1.addEventListener("click", function() {
+			
+			var b2 = document.createElement("button");
+			b2.appendChild(document.createTextNode("Ghost Click Busted!"));
+			setStyle(b2);
+			b2.addEventListener("click", function() {
+				b2.innerHTML = "Boo its a ghost";
+			});
+			document.getElementById("buttons").appendChild(b2);
+			FastClick.attach(b2);
+
+			b1.style.display="none";
+
+		});
+
+		document.getElementById("buttons").appendChild(b1);
+		FastClick.attach(b1);
+	}
+
+	window.addEventListener('load', function() {
+
+		console.log("LOADED");
+		FastClick.attach(document.body);
+		startDynamicContentCreation();
+		
+	}, false);
+
+	
+</script>
+</head>
+<body>
+	<div id="buttons">
+	</div>
+</body>
+</html>
